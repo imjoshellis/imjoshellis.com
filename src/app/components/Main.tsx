@@ -8,7 +8,11 @@ export const Main: FunctionComponent<MainPropTypes> = () => {
     base: ''
   }
   return (
-    <div className='max-w-sm mx-auto'>
+    <div className='max-w-xs mx-auto grid gap-8'>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
       <Card />
     </div>
   )
