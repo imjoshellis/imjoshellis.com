@@ -11,6 +11,9 @@
 # production
 /build
 
+# icon lib
+src/assets/heroicons
+
 # misc
 .DS_Store
 .env.local

@@ -217,7 +217,12 @@ module.exports = {
       yellow: yellow,
       orange: orange
     },
-    extend: {}
+    extend: {
+      spacing: {
+        '1px': '1px',
+        '2px': '2px'
+      }
+    }
   },
   variants: {},
   plugins: []
