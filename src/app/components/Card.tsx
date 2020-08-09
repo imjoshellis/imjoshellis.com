@@ -23,9 +23,9 @@ export const Card: FunctionComponent<CardPropTypes> = () => {
     info: {
       base: 'grid grid-gap-1 grid-cols-3 pb-4 shadow-lg',
       header: 'px-4 pt-3 text-xl mb-1 text-white truncate',
-      description: 'px-4 text-xs text-gray-10 col-span-2 truncate',
+      description: 'px-4 text-xs text-gray-10 col-span-2',
       stats:
-        'flex flex-col justify-center pl-4 border-l border-solid border-gray-80 text-gray-30 px-4',
+        'flex flex-col justify-center pl-4 border-l border-solid border-gray-100 text-gray-30 px-4',
       stat: 'mb-2 text-xs'
     },
     buttons: {
@@ -45,22 +45,6 @@ export const Card: FunctionComponent<CardPropTypes> = () => {
         <div className={classes.img}>
           <div className={classes.lastCommit}>Last Commit: 2 hours ago</div>
           <div className={classes.tags}>
-            <div className={classes.tag.base + ' bg-teal-70 text-teal-20'}>
-              <Icon kind='react' className={classes.tag.icon.react} />
-              <div className={classes.tag.name}>React</div>
-            </div>
-            <div className={classes.tag.base + ' bg-red-80 text-red-20'}>
-              <Icon kind='ruby' className={classes.tag.icon.ruby} />
-              <div className={classes.tag.name}>Ruby on Rails</div>
-            </div>
-            <div className={classes.tag.base + ' bg-teal-70 text-teal-20'}>
-              <Icon kind='react' className={classes.tag.icon.react} />
-              <div className={classes.tag.name}>React</div>
-            </div>
-            <div className={classes.tag.base + ' bg-red-80 text-red-20'}>
-              <Icon kind='ruby' className={classes.tag.icon.ruby} />
-              <div className={classes.tag.name}>Ruby on Rails</div>
-            </div>
             <div className={classes.tag.base + ' bg-teal-70 text-teal-20'}>
               <Icon kind='react' className={classes.tag.icon.react} />
               <div className={classes.tag.name}>React</div>
