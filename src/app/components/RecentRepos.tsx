@@ -82,9 +82,9 @@ export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
               (last commit {lastCommitTime}){' '}
               {lastCommitTime.includes('s') && (
                 <>
-                  <span role='img' aria-label='eyes emoji'>
+                  <span role='img' aria-label='sparkles emoji'>
                     {' '}
-                    👀️{' '}
+                    ✨️
                   </span>
                 </>
               )}
