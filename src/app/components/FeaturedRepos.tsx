@@ -7,61 +7,37 @@ import img from '../../assets/img.jpg'
 const GET_FEATURED_REPOS = gql`
   query GetFeaturedRepos {
     viewer {
-      justDoThree: repository(name: "just-do-three") {
-        name
-        description
-        homepageUrl
-        pushedAt
-        url
-        refs(refPrefix: "refs/heads/", last: 3) {
-          nodes {
-            name
-            target {
-              ... on Commit {
-                history {
-                  totalCount
+      pinnedItems(first: 3) {
+        edges {
+          node {
+            ... on Repository {
+              name
+              description
+              homepageUrl
+              pushedAt
+              url
+              refs(refPrefix: "refs/heads/", last: 3) {
+                nodes {
+                  name
+                  target {
+                    ... on Commit {
+                      history {
+                        totalCount
+                      }
+                      messageHeadline
+                      pushedDate
+                    }
+                  }
                 }
-                messageHeadline
-                pushedDate
               }
-            }
-          }
-        }
-        repositoryTopics(first: 100) {
-          edges {
-            node {
-              topic {
-                name
-              }
-            }
-          }
-        }
-      }
-      bgQuickstart: repository(name: "bgquickstart.com") {
-        name
-        description
-        homepageUrl
-        pushedAt
-        url
-        refs(refPrefix: "refs/heads/", last: 3) {
-          nodes {
-            name
-            target {
-              ... on Commit {
-                history {
-                  totalCount
+              repositoryTopics(first: 100) {
+                edges {
+                  node {
+                    topic {
+                      name
+                    }
+                  }
                 }
-                messageHeadline
-                pushedDate
-              }
-            }
-          }
-        }
-        repositoryTopics(first: 100) {
-          edges {
-            node {
-              topic {
-                name
               }
             }
           }
@@ -76,17 +52,16 @@ interface FeaturedReposProps {}
 export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
   const { loading, error, data } = useQuery(GET_FEATURED_REPOS)
 
-  const featuredRepoList = []
+  const featuredRepoList = [] as any[]
   let lastCommitTime
 
   if (data) {
-    if (data.viewer.justDoThree.pushedAt > data.viewer.bgQuickstart.pushedAt) {
-      featuredRepoList.push(data.viewer.justDoThree)
-      featuredRepoList.push(data.viewer.bgQuickstart)
-    } else {
-      featuredRepoList.push(data.viewer.bgQuickstart)
-      featuredRepoList.push(data.viewer.justDoThree)
-    }
+    data.viewer.pinnedItems.edges
+      .map((n: any) => n.node)
+      .concat()
+      .sort((a: any, b: any) => (a.pushedAt < b.pushedAt ? 1 : -1))
+      .forEach((r: any) => featuredRepoList.push(r))
+    console.log(featuredRepoList)
   }
 
   lastCommitTime = data && moment(featuredRepoList[0].pushedAt).fromNow()
@@ -110,7 +85,7 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
             </div>
           )}
         </h2>
-        <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
+        <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
           {loading && 'Loading data from GitHub...'}
           {error && `Error! ${error.message}`}
           {data &&
