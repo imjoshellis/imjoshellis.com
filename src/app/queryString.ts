@@ -7,7 +7,7 @@ export const queryString = `
     avatarUrl
     url
     status {
-      emoji
+      emojiHTML
       message
     }
     company
