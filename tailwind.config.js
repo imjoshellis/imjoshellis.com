@@ -28,27 +28,27 @@ var red = {
   90: red90,
   100: red100
 }
-var magenta10 = '#fff0f7'
-var magenta20 = '#ffd6e8'
-var magenta30 = '#ffafd2'
-var magenta40 = '#ff7eb6'
-var magenta50 = '#ee5396'
-var magenta60 = '#d12771'
-var magenta70 = '#9f1853'
-var magenta80 = '#740937'
-var magenta90 = '#510224'
-var magenta100 = '#2a0a18'
-var magenta = {
-  10: magenta10,
-  20: magenta20,
-  30: magenta30,
-  40: magenta40,
-  50: magenta50,
-  60: magenta60,
-  70: magenta70,
-  80: magenta80,
-  90: magenta90,
-  100: magenta100
+var pink10 = '#fff0f7'
+var pink20 = '#ffd6e8'
+var pink30 = '#ffafd2'
+var pink40 = '#ff7eb6'
+var pink50 = '#ee5396'
+var pink60 = '#d12771'
+var pink70 = '#9f1853'
+var pink80 = '#740937'
+var pink90 = '#510224'
+var pink100 = '#2a0a18'
+var pink = {
+  10: pink10,
+  20: pink20,
+  30: pink30,
+  40: pink40,
+  50: pink50,
+  60: pink60,
+  70: pink70,
+  80: pink80,
+  90: pink90,
+  100: pink100
 }
 var purple10 = '#f6f2ff'
 var purple20 = '#e8daff'
@@ -213,14 +213,40 @@ module.exports = {
       cyan: cyan,
       teal: teal,
       green: green,
-      magenta: magenta,
+      pink: pink,
       yellow: yellow,
       orange: orange
     },
     extend: {
       spacing: {
         '1px': '1px',
-        '2px': '2px'
+        '2px': '2px',
+        '1/2': '50%',
+        '1/3': '33.333333%',
+        '2/3': '66.666667%',
+        '1/4': '25%',
+        '2/4': '50%',
+        '3/4': '75%',
+        '1/5': '20%',
+        '2/5': '40%',
+        '3/5': '60%',
+        '4/5': '80%',
+        '1/6': '16.666667%',
+        '2/6': '33.333333%',
+        '3/6': '50%',
+        '4/6': '66.666667%',
+        '5/6': '83.333333%',
+        '1/12': '8.333333%',
+        '2/12': '16.666667%',
+        '3/12': '25%',
+        '4/12': '33.333333%',
+        '5/12': '41.666667%',
+        '6/12': '50%',
+        '7/12': '58.333333%',
+        '8/12': '66.666667%',
+        '9/12': '75%',
+        '10/12': '83.333333%',
+        '11/12': '91.666667%'
       }
     }
   },

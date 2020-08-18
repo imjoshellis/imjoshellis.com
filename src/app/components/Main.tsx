@@ -1,21 +1,16 @@
 import React, { FunctionComponent } from 'react'
-import Card from './Card'
+import RecentRepos from './RecentRepos'
+import FeaturedRepos from './FeaturedRepos'
 
 interface MainPropTypes {}
 
-export const Main: FunctionComponent<MainPropTypes> = () => {
-  let classes = {
-    base: ''
-  }
-  return (
-    <div className='max-w-xs mx-auto grid gap-8'>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+export const Main: FunctionComponent<MainPropTypes> = () => (
+  <>
+    <div className='max-w-xs mx-auto lg:max-w-5xl'>
+      <FeaturedRepos />
+      <RecentRepos />
     </div>
-  )
-}
+  </>
+)
 
 export default Main
