@@ -1,8 +1,26 @@
-import React, { FunctionComponent } from 'react'
 import moment from 'moment'
-import { Code, InformationCircle, Link } from '../../assets/heroicons/solid'
-import Icon from '../../assets/icons'
+import React, { FunctionComponent } from 'react'
+import { ChatAlt, Clock, Code, Link } from '../../assets/heroicons/outline'
 import Tag from './Tag'
+
+moment.updateLocale('en', {
+  relativeTime: {
+    future: 'in %s',
+    past: '%s ago',
+    s: '%ds',
+    ss: '%ds',
+    m: '%dm',
+    mm: '%dm',
+    h: '%dh',
+    hh: '%dh',
+    d: '%dd',
+    dd: '%dd',
+    M: '%dm',
+    MM: '%dm',
+    y: '%dy',
+    yy: '%dy'
+  }
+})
 
 interface CardPropTypes {
   repoData: any
@@ -39,8 +57,16 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
     (e: any) => e.node.topic.name
   )
 
-  const commitCount = repoData.defaultBranchRef.target.history.totalCount
-  const lastCommit = moment(repoData.pushedAt).fromNow()
+  const recentRef = repoData.refs.nodes
+    .concat()
+    .sort((a: any, b: any) => a.target.pushedDate - b.target.pushedDate)[0]
+  const commitCount = repoData.refs.nodes.reduce(
+    (acc: number, curr: any) => acc + curr.target.history.totalCount,
+    0
+  )
+  const lastCommitMsg = recentRef.target.messageHeadline
+  const lastCommitTime = moment(recentRef.target.pushedDate).fromNow()
+  const lastCommitBranch = recentRef.name
   const repoLink = repoData.url
   const demoLink = repoData.homepageUrl
 
@@ -48,23 +74,35 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
     <div className={classes.wrap}>
       <div className={classes.base}>
         <div className={classes.head}>
-          <div className={classes.lastCommit}>Last Commit: {lastCommit}</div>
           <div className={classes.tags}>
             {topics &&
               topics
                 .sort()
-                .map((t: string) => <Tag name={t.split('-').join(' ')} />)}
+                .map((t: string) => (
+                  <Tag key={t} name={t.split('-').join(' ')} />
+                ))}
           </div>
         </div>
-        <div className='flex items-baseline'>
+        <div className='flex flex-col flex-grow'>
           <h3 className={classes.info.header}>
             {repoData.name.split('-').join(' ')}
           </h3>
-          <div className='px-1 text-xs text-gray-40'>{commitCount} Commits</div>
-        </div>
-        <div className={classes.info.base}>
-          <div className={classes.info.description}>
+          <div className='flex-grow px-4 text-sm text-gray-10'>
             {repoData.description ? repoData.description : 'No description'}
+          </div>
+          <div className='w-8 my-3 ml-4 border border-t-0 border-gray-70' />
+          <div className='pb-3'>
+            <div className='flex items-center px-4 text-xs text-gray-30'>
+              <ChatAlt className='w-3 h-3 mr-1 text-green-40' />
+              <div>{lastCommitMsg}</div>
+            </div>
+            <div className='flex items-center px-4 text-xs text-gray-30'>
+              <Clock className='w-3 h-3 mr-1 text-green-40' />
+              <div>
+                {lastCommitTime} <span className='text-gray-50'>on</span>{' '}
+                {lastCommitBranch}
+              </div>
+            </div>
           </div>
         </div>
       </div>
