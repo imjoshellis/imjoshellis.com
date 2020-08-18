@@ -79,8 +79,13 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
   const featuredRepoList = []
 
   if (data) {
-    featuredRepoList.push(data.viewer.justDoThree)
-    featuredRepoList.push(data.viewer.bgQuickstart)
+    if (data.viewer.justDoThree.pushedAt > data.viewer.bgQuickstart.pushedAt) {
+      featuredRepoList.push(data.viewer.justDoThree)
+      featuredRepoList.push(data.viewer.bgQuickstart)
+    } else {
+      featuredRepoList.push(data.viewer.bgQuickstart)
+      featuredRepoList.push(data.viewer.justDoThree)
+    }
   }
 
   return (
