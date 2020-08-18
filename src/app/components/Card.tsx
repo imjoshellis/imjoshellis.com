@@ -24,6 +24,7 @@ moment.updateLocale('en', {
 
 interface CardPropTypes {
   repoData: any
+  img?: string
 }
 
 export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
