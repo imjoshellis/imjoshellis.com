@@ -77,6 +77,7 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
   const { loading, error, data } = useQuery(GET_FEATURED_REPOS)
 
   const featuredRepoList = []
+  let lastCommitTime
 
   if (data) {
     if (data.viewer.justDoThree.pushedAt > data.viewer.bgQuickstart.pushedAt) {
@@ -88,6 +89,8 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
     }
   }
 
+  lastCommitTime = data && moment(featuredRepoList[0].pushedAt).fromNow()
+
   return (
     <>
       <div>
@@ -95,7 +98,15 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
           Featured Projects{' '}
           {data && (
             <div className='ml-2 text-sm font-normal text-gray-30'>
-              (last commit {moment(featuredRepoList[0].pushedAt).fromNow()})
+              (last commit {lastCommitTime}){' '}
+              {lastCommitTime.includes('m') && (
+                <>
+                  <span role='img' aria-label='sparkles emoji'>
+                    {' '}
+                    ✨️
+                  </span>
+                </>
+              )}
             </div>
           )}
         </h2>
