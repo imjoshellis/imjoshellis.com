@@ -48,8 +48,9 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
       btn:
         'tracking-wide flex justify-center items-center uppercase font-bold p-1 bg-gray-60 bg-gray-50 hover:bg-gray-50 hover:text-white border-2 border-transparent focus:outline-none focus:border-gray-10 transition duration-200',
       left: 'rounded rounded-t-none rounded-r-none',
-      center: '',
-      right: 'bg-blue-60 rounded rounded-t-none rounded-l-none hover:bg-blue-50'
+      right:
+        'bg-blue-60 rounded rounded-t-none rounded-l-none hover:bg-blue-50',
+      only: 'rounded rounded-t-none col-span-2'
     }
   }
 
@@ -107,22 +108,35 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
         </div>
       </div>
       <div className={classes.buttons.base}>
-        <a
-          className={classes.buttons.btn + ' ' + classes.buttons.left}
-          href={repoLink}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Code className={classes.buttons.icon} /> GITHUB
-        </a>
-        <a
-          className={classes.buttons.btn + ' ' + classes.buttons.right}
-          href={demoLink}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Link className={classes.buttons.icon} /> DEMO
-        </a>
+        {demoLink ? (
+          <>
+            <a
+              className={classes.buttons.btn + ' ' + classes.buttons.left}
+              href={repoLink}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Code className={classes.buttons.icon} /> GITHUB
+            </a>
+            <a
+              className={classes.buttons.btn + ' ' + classes.buttons.right}
+              href={demoLink}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Link className={classes.buttons.icon} /> LIVE
+            </a>
+          </>
+        ) : (
+          <a
+            className={classes.buttons.btn + ' ' + classes.buttons.only}
+            href={repoLink}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <Code className={classes.buttons.icon} /> GITHUB
+          </a>
+        )}
       </div>
     </div>
   )
