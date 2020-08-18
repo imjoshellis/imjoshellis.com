@@ -28,27 +28,27 @@ var red = {
   90: red90,
   100: red100
 }
-var magenta10 = '#fff0f7'
-var magenta20 = '#ffd6e8'
-var magenta30 = '#ffafd2'
-var magenta40 = '#ff7eb6'
-var magenta50 = '#ee5396'
-var magenta60 = '#d12771'
-var magenta70 = '#9f1853'
-var magenta80 = '#740937'
-var magenta90 = '#510224'
-var magenta100 = '#2a0a18'
-var magenta = {
-  10: magenta10,
-  20: magenta20,
-  30: magenta30,
-  40: magenta40,
-  50: magenta50,
-  60: magenta60,
-  70: magenta70,
-  80: magenta80,
-  90: magenta90,
-  100: magenta100
+var pink10 = '#fff0f7'
+var pink20 = '#ffd6e8'
+var pink30 = '#ffafd2'
+var pink40 = '#ff7eb6'
+var pink50 = '#ee5396'
+var pink60 = '#d12771'
+var pink70 = '#9f1853'
+var pink80 = '#740937'
+var pink90 = '#510224'
+var pink100 = '#2a0a18'
+var pink = {
+  10: pink10,
+  20: pink20,
+  30: pink30,
+  40: pink40,
+  50: pink50,
+  60: pink60,
+  70: pink70,
+  80: pink80,
+  90: pink90,
+  100: pink100
 }
 var purple10 = '#f6f2ff'
 var purple20 = '#e8daff'
@@ -213,7 +213,7 @@ module.exports = {
       cyan: cyan,
       teal: teal,
       green: green,
-      magenta: magenta,
+      pink: pink,
       yellow: yellow,
       orange: orange
     },
