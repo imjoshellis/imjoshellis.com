@@ -12,7 +12,7 @@ export const queryString = `
     }
     company
     isHireable
-    pinnedItems (first: 2) {
+    pinnedItems (first: 6) {
       edges {
         node {
           ...on Repository {
