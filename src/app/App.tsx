@@ -46,7 +46,7 @@ client.query({
         }
         repositories(
           orderBy: { field: PUSHED_AT, direction: ASC }
-          last: 3
+          last: 9
           privacy: PUBLIC
         ) {
           edges {

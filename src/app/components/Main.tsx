@@ -10,7 +10,7 @@ export const Main: FunctionComponent<MainPropTypes> = () => {
       viewer {
         repositories(
           orderBy: { field: PUSHED_AT, direction: ASC }
-          last: 3
+          last: 5
           privacy: PUBLIC
         ) {
           edges {
@@ -64,11 +64,16 @@ export const Main: FunctionComponent<MainPropTypes> = () => {
 
   const { loading, error, data } = useQuery(GET_RECENT_REPOS)
 
+  data && console.log(data.viewer.repositories.edges)
+
   return (
     <div className='max-w-xs mx-auto grid gap-8'>
       {loading && 'Loading...'}
       {error && `Error! ${error.message}`}
-      {data && <Card />}
+      {data &&
+        data.viewer.repositories.edges.map((r: any) => (
+          <Card key={r.node.name} repoData={r.node} />
+        ))}
     </div>
   )
 }
