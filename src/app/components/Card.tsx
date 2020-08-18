@@ -126,6 +126,14 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
               <div>
                 {lastCommitTime} <span className='text-gray-50'>on</span>{' '}
                 {lastCommitBranch}
+                {lastCommitTime.match(/[ms]/) && (
+                  <>
+                    <span role='img' aria-label='sparkles emoji'>
+                      {' '}
+                      ✨️
+                    </span>
+                  </>
+                )}
               </div>
             </div>
             <div className='flex items-center px-4 text-xs text-gray-30'>
