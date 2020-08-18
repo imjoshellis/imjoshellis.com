@@ -112,7 +112,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
               {repoData.name.split('-').join(' ')}
             </a>
           </h3>
-          <div className='flex-grow px-4 text-sm text-gray-10'>
+          <div className='flex-grow px-4 text-sm text-gray-30'>
             {repoData.description ? repoData.description : 'No description'}
           </div>
           <div className='w-8 my-3 ml-4 border border-t-0 border-gray-70' />
