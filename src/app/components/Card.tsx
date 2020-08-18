@@ -115,7 +115,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
           <div className='flex-grow px-4 text-sm text-gray-30'>
             {repoData.description ? repoData.description : 'No description'}
           </div>
-          <div className='w-8 my-3 ml-4 border border-t-0 border-gray-70' />
+          <div className='w-6 my-3 ml-4 border border-l-0 border-r-0 rounded border-gray-70' />
           <div className='pb-3'>
             <div className='flex items-center px-4 text-xs text-gray-30'>
               <ChatAlt className='w-3 h-3 mr-1 text-green-40' />
