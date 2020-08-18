@@ -119,7 +119,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
           <div className='pb-3'>
             <div className='flex items-center px-4 text-xs text-gray-30'>
               <ChatAlt className='w-3 h-3 mr-1 text-green-40' />
-              <div>{lastCommitMsg}</div>
+              <div className='truncate'>{lastCommitMsg}</div>
             </div>
             <div className='flex items-center px-4 text-xs text-gray-30'>
               <Clock className='w-3 h-3 mr-1 text-green-40' />
