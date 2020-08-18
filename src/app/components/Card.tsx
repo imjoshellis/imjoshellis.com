@@ -38,9 +38,9 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
     wrap: 'shadow h-full flex flex-col',
     base:
       'bg-gray-90 rounded-lg rounded-b-none overflow-hidden flex-grow flex flex-col',
-    head: 'flex flex-col justify-between text-gray-30 bg-gray-80 p-4 pt-3 pb-1',
+    head: 'flex flex-col justify-between text-gray-30 bg-gray-80',
     lastCommit: 'text-xs text-white pt-1',
-    tags: 'flex flex-row flex-wrap pt-2',
+    tags: 'flex flex-row flex-wrap p-4 pb-2',
     info: {
       base: 'pb-4',
       header: 'pl-4 pt-3 font-medium tracking-wider mb-1 text-white truncate ',
@@ -93,7 +93,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
           </div>
         </div>
         {img && (
-          <div className='relative pb-2/3'>
+          <div className='relative pb-2/5'>
             <img
               src={img}
               alt={repoData.name + ' image'}
