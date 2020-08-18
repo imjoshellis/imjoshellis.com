@@ -55,15 +55,6 @@ export const Main: FunctionComponent<MainPropTypes> = () => {
                 pullRequests(first: 100) {
                   totalCount
                 }
-                defaultBranchRef {
-                  target {
-                    ... on Commit {
-                      history {
-                        totalCount
-                      }
-                    }
-                  }
-                }
               }
             }
           }
