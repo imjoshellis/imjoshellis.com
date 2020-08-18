@@ -1,6 +1,7 @@
 import { gql, useQuery } from '@apollo/client'
 import React, { FunctionComponent } from 'react'
 import Card from './Card'
+import moment from 'moment'
 
 interface MainPropTypes {}
 
@@ -72,14 +73,63 @@ export const Main: FunctionComponent<MainPropTypes> = () => {
   data && console.log(data.viewer.repositories.edges)
 
   return (
-    <div className='max-w-xs mx-auto grid gap-8'>
-      {loading && 'Loading...'}
-      {error && `Error! ${error.message}`}
-      {data &&
-        data.viewer.repositories.edges.map((r: any) => (
-          <Card key={r.node.name} repoData={r.node} />
-        ))}
-    </div>
+    <>
+      <div className='max-w-xs mx-auto lg:max-w-5xl'>
+        <div>
+          <h2 className='flex items-baseline py-2 text-xl font-bold'>
+            Featured Projects{' '}
+            {data && (
+              <div className='ml-2 text-sm font-normal text-gray-30'>
+                (last commit{' '}
+                {moment(
+                  data.viewer.repositories.edges.concat().reverse()[0].node
+                    .pushedAt
+                ).fromNow()}
+                )
+              </div>
+            )}
+          </h2>
+          <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
+            {loading && 'Loading...'}
+            {error && `Error! ${error.message}`}
+            {data &&
+              data.viewer.repositories.edges
+                .slice(1, 3)
+                .map((r: any) => (
+                  <Card
+                    key={r.node.name}
+                    img={'./assets/img.png'}
+                    repoData={r.node}
+                  />
+                ))
+                .reverse()}
+          </div>
+        </div>
+        <div className='mt-8'>
+          <h2 className='flex items-baseline py-2 text-xl font-bold'>
+            What I'm Working On{' '}
+            {data && (
+              <div className='ml-2 text-sm font-normal text-gray-30'>
+                (last commit{' '}
+                {moment(
+                  data.viewer.repositories.edges.concat().reverse()[0].node
+                    .pushedAt
+                ).fromNow()}
+                )
+              </div>
+            )}
+          </h2>
+          <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
+            {loading && 'Loading...'}
+            {error && `Error! ${error.message}`}
+            {data &&
+              data.viewer.repositories.edges
+                .map((r: any) => <Card key={r.node.name} repoData={r.node} />)
+                .reverse()}
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
