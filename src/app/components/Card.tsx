@@ -67,7 +67,9 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
 
   const recentRef = repoData.refs.nodes
     .concat()
-    .sort((a: any, b: any) => a.target.pushedDate - b.target.pushedDate)[0]
+    .sort((a: any, b: any) =>
+      a.target.pushedDate < b.target.pushedDate ? 1 : -1
+    )[0]
   const commitCount = repoData.refs.nodes.reduce(
     (acc: number, curr: any) => acc + curr.target.history.totalCount,
     0
