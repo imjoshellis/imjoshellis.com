@@ -4,11 +4,50 @@ export const queryString = `
     name
     updatedAt
     bio
+    avatarUrl
+    url
     status {
+      emoji
       message
     }
     company
     isHireable
+    pinnedItems (first: 2) {
+      edges {
+        node {
+          ...on Repository {
+            name
+            description
+            homepageUrl
+            pushedAt
+            url
+            refs(refPrefix: "refs/heads/", last: 3) {
+              nodes {
+                name
+                target {
+                  ... on Commit {
+                    history {
+                      totalCount
+                    }
+                    messageHeadline
+                    pushedDate
+                  }
+                }
+              }
+            }
+            repositoryTopics(first: 100) {
+              edges {
+                node {
+                  topic {
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     justDoThree: repository(name: "just-do-three") {
       name
       description
