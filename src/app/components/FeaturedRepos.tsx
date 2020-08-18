@@ -99,7 +99,7 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
           {data && (
             <div className='ml-2 text-sm font-normal text-gray-30'>
               (last commit {lastCommitTime}){' '}
-              {lastCommitTime.includes('m') && (
+              {lastCommitTime.match(/[ms]/) && (
                 <>
                   <span role='img' aria-label='sparkles emoji'>
                     {' '}
