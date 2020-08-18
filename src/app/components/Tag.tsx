@@ -7,13 +7,13 @@ interface TagProps {
 export const Tag: FunctionComponent<TagProps> = ({ name }) => {
   const generateTagWrap = (name: string) => {
     const classnames = [
-      'flex flex-row items-center mr-2 mb-2 rounded text-xs shadow-md overflow-hidden transition duration-200'
+      'flex flex-row items-center mr-2 mb-2 rounded text-xs shadow-md overflow-hidden transition duration-200 select-none'
     ] as String[]
     const baseColor = 'bg-gray-70 text-gray-30'
     const specialNames = [
       {
         name: 'ruby on rails',
-        classes: 'bg-red-70 text-red-20 select-none'
+        classes: 'bg-red-70 text-red-20'
       },
       { name: 'react', classes: 'bg-teal-60 text-teal-20' },
       { name: 'apollo', classes: 'bg-purple-70 text-purple-20' },
