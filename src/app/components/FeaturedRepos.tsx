@@ -100,7 +100,7 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
           )}
         </h2>
         <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
-          {loading && 'Loading...'}
+          {loading && 'Loading data from GitHub...'}
           {error && `Error! ${error.message}`}
           {data &&
             featuredRepoList.map((r: any) => (

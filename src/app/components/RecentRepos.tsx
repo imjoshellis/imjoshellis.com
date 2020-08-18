@@ -82,7 +82,7 @@ export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
           )}
         </h2>
         <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
-          {loading && 'Loading...'}
+          {loading && 'Loading data from GitHub...'}
           {error && `Error! ${error.message}`}
           {data &&
             data.viewer.repositories.edges
