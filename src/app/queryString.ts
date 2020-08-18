@@ -39,7 +39,7 @@ export const queryString = `
         }
       }
     }
-    bgQuickstart: repository(name: "bg-quickstart") {
+    bgQuickstart: repository(name: "bgquickstart.com") {
       name
       description
       homepageUrl
