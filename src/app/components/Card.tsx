@@ -1,6 +1,12 @@
 import moment from 'moment'
 import React, { FunctionComponent } from 'react'
-import { ChatAlt, Clock, Code, Link } from '../../assets/heroicons/outline'
+import {
+  ChatAlt,
+  Clock,
+  Code,
+  Link,
+  Terminal
+} from '../../assets/heroicons/outline'
 import Tag from './Tag'
 
 moment.updateLocale('en', {
@@ -66,6 +72,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
     (acc: number, curr: any) => acc + curr.target.history.totalCount,
     0
   )
+  const branchCount = repoData.refs.nodes.length
   const lastCommitMsg = recentRef.target.messageHeadline
   const lastCommitTime = moment(recentRef.target.pushedDate).fromNow()
   const lastCommitBranch = recentRef.name
@@ -103,6 +110,13 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
               <div>
                 {lastCommitTime} <span className='text-gray-50'>on</span>{' '}
                 {lastCommitBranch}
+              </div>
+            </div>
+            <div className='flex items-center px-4 text-xs text-gray-30'>
+              <Terminal className='w-3 h-3 mr-1 text-green-40' />
+              <div>
+                {commitCount} commits <span className='text-gray-50'>on</span>{' '}
+                {branchCount} {branchCount > 1 ? 'branches' : 'branch'}
               </div>
             </div>
           </div>
