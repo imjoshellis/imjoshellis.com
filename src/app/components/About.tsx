@@ -4,6 +4,7 @@ import { gql, useQuery } from '@apollo/client'
 const GET_ABOUT = gql`
   query GetAbout {
     viewer {
+      id
       name
       updatedAt
       bio

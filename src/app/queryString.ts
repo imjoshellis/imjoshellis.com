@@ -2,6 +2,7 @@ export const queryString = `
 {
   viewer {
     name
+    id
     updatedAt
     bio
     avatarUrl

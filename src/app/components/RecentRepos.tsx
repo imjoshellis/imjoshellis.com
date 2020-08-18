@@ -6,6 +6,7 @@ import Card from './Card'
 const GET_RECENT_REPOS = gql`
   query GetRecentRepos {
     viewer {
+      id
       repositories(
         orderBy: { field: PUSHED_AT, direction: ASC }
         last: 3

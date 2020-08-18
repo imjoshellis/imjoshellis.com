@@ -7,6 +7,7 @@ import img from '../../assets/img.jpg'
 const GET_FEATURED_REPOS = gql`
   query GetFeaturedRepos {
     viewer {
+      id
       pinnedItems(first: 3) {
         edges {
           node {
@@ -61,7 +62,6 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
       .concat()
       .sort((a: any, b: any) => (a.pushedAt < b.pushedAt ? 1 : -1))
       .forEach((r: any) => featuredRepoList.push(r))
-    console.log(featuredRepoList)
   }
 
   lastCommitTime = data && moment(featuredRepoList[0].pushedAt).fromNow()
