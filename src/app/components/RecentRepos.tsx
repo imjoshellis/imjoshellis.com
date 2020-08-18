@@ -79,11 +79,8 @@ export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
           Current Projects{' '}
           {data && (
             <div className='ml-2 text-sm font-normal text-gray-30'>
-              (last commit{' '}
-              {lastCommitTime.includes('s')
-                ? lastCommitTime + ' 👀️'
-                : lastCommitTime}
-              )
+              (last commit {lastCommitTime}){' '}
+              {lastCommitTime.includes('s') && ' 👀️'}
             </div>
           )}
         </h2>
