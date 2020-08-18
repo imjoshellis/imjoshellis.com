@@ -69,7 +69,7 @@ export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
     <>
       <div className='mt-8'>
         <h2 className='flex items-baseline py-2 text-xl font-bold'>
-          What I'm Working On{' '}
+          Current Projects{' '}
           {data && (
             <div className='ml-2 text-sm font-normal text-gray-30'>
               (last commit{' '}
