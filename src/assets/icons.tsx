@@ -67,7 +67,7 @@ const Icon = ({ kind, className }: proptypes) => {
         <ReactIcon />
       </svg>
     )
-  if (kind === 'ruby')
+  if (kind === 'ruby on rails')
     return (
       <svg {...props}>
         <Ruby />
