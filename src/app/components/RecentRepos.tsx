@@ -65,6 +65,13 @@ interface RecentReposProps {}
 
 export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
   const { loading, error, data } = useQuery(GET_RECENT_REPOS)
+
+  let lastCommitTime
+  lastCommitTime =
+    data &&
+    moment(
+      data.viewer.repositories.edges.concat().reverse()[0].node.pushedAt
+    ).fromNow()
   return (
     <>
       <div className='mt-8'>
@@ -73,10 +80,9 @@ export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
           {data && (
             <div className='ml-2 text-sm font-normal text-gray-30'>
               (last commit{' '}
-              {moment(
-                data.viewer.repositories.edges.concat().reverse()[0].node
-                  .pushedAt
-              ).fromNow()}
+              {lastCommitTime.includes('s')
+                ? lastCommitTime + ' 👀️'
+                : lastCommitTime}
               )
             </div>
           )}
