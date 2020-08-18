@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import Icon from '../../assets/icons'
 
 interface TagProps {
   name: string
