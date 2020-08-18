@@ -155,7 +155,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
               target='_blank'
               rel='noopener noreferrer'
             >
-              <Link className={classes.buttons.icon} /> LIVE
+              <Link className={classes.buttons.icon} /> LIVE SITE
             </a>
           </>
         ) : (
