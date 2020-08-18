@@ -10,7 +10,7 @@ export const Main: FunctionComponent<MainPropTypes> = () => {
       viewer {
         repositories(
           orderBy: { field: PUSHED_AT, direction: ASC }
-          last: 5
+          last: 3
           privacy: PUBLIC
         ) {
           edges {
@@ -21,6 +21,20 @@ export const Main: FunctionComponent<MainPropTypes> = () => {
                 homepageUrl
                 pushedAt
                 url
+                refs(refPrefix: "refs/heads/", last: 3) {
+                  nodes {
+                    name
+                    target {
+                      ... on Commit {
+                        history {
+                          totalCount
+                        }
+                        messageHeadline
+                        pushedDate
+                      }
+                    }
+                  }
+                }
                 languages(first: 100) {
                   edges {
                     node {
