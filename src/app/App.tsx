@@ -15,75 +15,73 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-client
-  .query({
-    query: gql`
-      query {
-        viewer {
-          name
-          updatedAt
-          bio
-          status {
-            message
+client.query({
+  query: gql`
+    query {
+      viewer {
+        name
+        updatedAt
+        bio
+        status {
+          message
+        }
+        company
+        isHireable
+        pullRequests(last: 1) {
+          edges {
+            node {
+              createdAt
+              repository {
+                name
+              }
+            }
           }
-          company
-          isHireable
-          pullRequests(last: 1) {
-            edges {
-              node {
-                createdAt
-                repository {
-                  name
+        }
+        commitComments(last: 1) {
+          edges {
+            node {
+              bodyText
+            }
+          }
+        }
+        repositories(
+          orderBy: { field: PUSHED_AT, direction: ASC }
+          last: 3
+          privacy: PUBLIC
+        ) {
+          edges {
+            node {
+              ... on Repository {
+                name
+                description
+                homepageUrl
+                pushedAt
+                url
+                languages(first: 100) {
+                  edges {
+                    node {
+                      name
+                      color
+                    }
+                  }
                 }
-              }
-            }
-          }
-          commitComments(last: 1) {
-            edges {
-              node {
-                bodyText
-              }
-            }
-          }
-          repositories(
-            orderBy: { field: PUSHED_AT, direction: ASC }
-            last: 3
-            privacy: PUBLIC
-          ) {
-            edges {
-              node {
-                ... on Repository {
-                  name
-                  description
-                  homepageUrl
-                  pushedAt
-                  url
-                  languages(first: 100) {
-                    edges {
-                      node {
+                repositoryTopics(first: 100) {
+                  edges {
+                    node {
+                      topic {
                         name
-                        color
                       }
                     }
                   }
-                  repositoryTopics(first: 100) {
-                    edges {
-                      node {
-                        topic {
-                          name
-                        }
-                      }
-                    }
-                  }
-                  pullRequests(first: 100) {
-                    totalCount
-                  }
-                  defaultBranchRef {
-                    target {
-                      ... on Commit {
-                        history {
-                          totalCount
-                        }
+                }
+                pullRequests(first: 100) {
+                  totalCount
+                }
+                defaultBranchRef {
+                  target {
+                    ... on Commit {
+                      history {
+                        totalCount
                       }
                     }
                   }
@@ -93,9 +91,9 @@ client
           }
         }
       }
-    `
-  })
-  .then(result => console.log(result))
+    }
+  `
+})
 
 function App () {
   return (
