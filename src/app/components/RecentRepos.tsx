@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { gql, useQuery } from '@apollo/client'
+import moment from 'moment'
+import Card from './Card'
 
 const GET_RECENT_REPOS = gql`
   query GetRecentRepos {
@@ -61,6 +63,35 @@ const GET_RECENT_REPOS = gql`
 
 interface RecentReposProps {}
 
-export const RecentRepos: FunctionComponent<RecentReposProps> = () => <></>
+export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
+  const { loading, error, data } = useQuery(GET_RECENT_REPOS)
+  return (
+    <>
+      <div className='mt-8'>
+        <h2 className='flex items-baseline py-2 text-xl font-bold'>
+          What I'm Working On{' '}
+          {data && (
+            <div className='ml-2 text-sm font-normal text-gray-30'>
+              (last commit{' '}
+              {moment(
+                data.viewer.repositories.edges.concat().reverse()[0].node
+                  .pushedAt
+              ).fromNow()}
+              )
+            </div>
+          )}
+        </h2>
+        <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
+          {loading && 'Loading...'}
+          {error && `Error! ${error.message}`}
+          {data &&
+            data.viewer.repositories.edges
+              .map((r: any) => <Card key={r.node.name} repoData={r.node} />)
+              .reverse()}
+        </div>
+      </div>
+    </>
+  )
+}
 
 export default RecentRepos
