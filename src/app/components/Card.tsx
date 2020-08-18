@@ -33,7 +33,7 @@ interface CardPropTypes {
   img?: string
 }
 
-export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
+export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
   let classes = {
     wrap: 'shadow h-full flex flex-col',
     base:
@@ -92,6 +92,15 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData }) => {
                 ))}
           </div>
         </div>
+        {img && (
+          <div className='relative pb-2/3'>
+            <img
+              src={img}
+              alt={repoData.name + ' image'}
+              className='absolute object-cover w-full h-full'
+            />
+          </div>
+        )}
         <div className='flex flex-col flex-grow'>
           <h3 className={classes.info.header}>
             {repoData.name.split('-').join(' ')}
