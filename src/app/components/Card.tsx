@@ -103,7 +103,14 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
         )}
         <div className='flex flex-col flex-grow'>
           <h3 className={classes.info.header}>
-            {repoData.name.split('-').join(' ')}
+            <a
+              href={repoLink}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='transition duration-200 text-gray-20 hover:text-gray-10'
+            >
+              {repoData.name.split('-').join(' ')}
+            </a>
           </h3>
           <div className='flex-grow px-4 text-sm text-gray-10'>
             {repoData.description ? repoData.description : 'No description'}
