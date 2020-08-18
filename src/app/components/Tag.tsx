@@ -14,9 +14,13 @@ export const Tag: FunctionComponent<TagProps> = ({ name }) => {
     const specialNames = [
       {
         name: 'ruby on rails',
-        classes: 'bg-red-80 text-red-20 select-none'
+        classes: 'bg-red-70 text-red-20 select-none'
       },
-      { name: 'react', classes: 'bg-teal-70 text-teal-20' }
+      { name: 'react', classes: 'bg-teal-60 text-teal-20' },
+      { name: 'apollo', classes: 'bg-purple-70 text-purple-20' },
+      { name: 'redux', classes: 'bg-purple-70 text-purple-20' },
+      { name: 'graphql', classes: 'bg-pink-60 text-pink-20' },
+      { name: 'typescript', classes: 'bg-cyan-60 text-cyan-20' }
     ]
     const idx = specialNames.findIndex(o => o.name === name)
     if (idx >= 0) {
@@ -26,12 +30,9 @@ export const Tag: FunctionComponent<TagProps> = ({ name }) => {
     }
     return classnames.join(' ')
   }
-  const generateIcon = (name: string) => {
+  /* const generateIcon = (name: string) => {
     const classnames = ['w-5 h-5 p-1'] as String[]
-    const specialNames = [
-      { name: 'ruby on rails', classes: 'bg-red-60' },
-      { name: 'react', classes: 'bg-teal-50' }
-    ]
+    const specialNames = []
     let icon
     const idx = specialNames.findIndex(o => o.name === name)
     if (idx >= 0) {
@@ -39,15 +40,15 @@ export const Tag: FunctionComponent<TagProps> = ({ name }) => {
       icon = <Icon kind={name} className={classnames.join(' ')} />
     }
     return icon
-  }
+  }*/
 
   const tagWrap = generateTagWrap(name)
-  const icon = generateIcon(name)
+  // const icon = generateIcon(name)
 
   return (
     <>
       <div className={tagWrap}>
-        {icon && icon}
+        {/* {icon && icon} */}
         <div className='flex-grow px-2'>{name}</div>
       </div>
     </>
