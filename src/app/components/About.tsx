@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import { gql, useQuery } from '@apollo/client'
-import IconDetail from './IconDetail'
-import { Newspaper, AcademicCap } from '../../assets/heroicons/outline'
 
 const GET_ABOUT = gql`
   query GetAbout {
@@ -11,6 +9,7 @@ const GET_ABOUT = gql`
       updatedAt
       bio
       avatarUrl
+      location
       url
       status {
         emojiHTML
@@ -80,6 +79,22 @@ export const About: FunctionComponent<AboutProps> = () => {
                   <span className='ml-1'>{my.status.message}</span>.
                 </div>
               )}
+              {my.location && (
+                <div className='flex text-gray-30'>
+                  <span role='img' aria-label='Graduate Emoji' className='mr-1'>
+                    🗺️
+                  </span>
+                  <span className='ml-1'>{my.location}</span>
+                </div>
+              )}
+              {my.company && (
+                <div className='flex text-gray-30'>
+                  <span role='img' aria-label='Graduate Emoji' className='mr-1'>
+                    🏢️
+                  </span>
+                  <span className='ml-1'>{my.company}</span>
+                </div>
+              )}{' '}
               <div className='flex text-gray-30'>
                 <span role='img' aria-label='Graduate Emoji' className='mr-1'>
                   👨🏻‍🎓
