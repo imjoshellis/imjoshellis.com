@@ -131,12 +131,12 @@ export const Card: FunctionComponent<CardPropTypes> = ({
           <div className='px-4 pb-3'>
             <IconDetail
               icon={<ChatAlt />}
-              size='sm'
+              size='xs'
               text={<div className='w-full truncate'>{lastCommitMsg}</div>}
             />
             <IconDetail
               icon={<Clock />}
-              size='sm'
+              size='xs'
               text={
                 <div>
                   {lastCommitTime} <span className='text-gray-50'>on</span>{' '}
@@ -154,7 +154,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({
             />
             <IconDetail
               icon={<Terminal />}
-              size='sm'
+              size='xs'
               text={
                 <div>
                   {commitCount} commits <span className='text-gray-50'>on</span>{' '}
