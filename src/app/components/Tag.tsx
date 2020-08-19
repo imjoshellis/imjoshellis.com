@@ -9,7 +9,7 @@ export const Tag: FunctionComponent<TagProps> = ({ name }) => {
     const classnames = [
       'flex flex-row items-center mr-2 mb-2 rounded text-xs shadow-md overflow-hidden transition duration-200 select-none'
     ] as String[]
-    const baseColor = 'bg-gray-70 text-gray-30'
+    const baseColor = 'bg-gray-70 text-gray-20'
     const specialNames = [
       { name: 'apollo', classes: 'bg-purple-70 text-purple-20' },
       { name: 'graphql', classes: 'bg-pink-60 text-pink-20' },
