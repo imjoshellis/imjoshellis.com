@@ -1,8 +1,7 @@
-import React, { FunctionComponent } from 'react'
 import { gql, useQuery } from '@apollo/client'
 import moment from 'moment'
+import React, { FunctionComponent } from 'react'
 import Card from './Card'
-import img from '../../assets/img.jpg'
 
 const GET_FEATURED_REPOS = gql`
   query GetFeaturedRepos {
@@ -17,6 +16,8 @@ const GET_FEATURED_REPOS = gql`
               homepageUrl
               pushedAt
               url
+              openGraphImageUrl
+              usesCustomOpenGraphImage
               refs(refPrefix: "refs/heads/", last: 3) {
                 nodes {
                   name
@@ -90,7 +91,7 @@ export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
           {error && `Error! ${error.message}`}
           {data &&
             featuredRepoList.map((r: any) => (
-              <Card key={r.name} img={img} repoData={r} />
+              <Card key={r.name} repoData={r} useImage={true} />
             ))}
         </div>
       </div>

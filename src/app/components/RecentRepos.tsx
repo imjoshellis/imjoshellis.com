@@ -20,6 +20,8 @@ const GET_RECENT_REPOS = gql`
               homepageUrl
               pushedAt
               url
+              openGraphImageUrl
+              usesCustomOpenGraphImage
               refs(refPrefix: "refs/heads/", last: 3) {
                 nodes {
                   name
@@ -97,7 +99,9 @@ export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
           {error && `Error! ${error.message}`}
           {data &&
             data.viewer.repositories.edges
-              .map((r: any) => <Card key={r.node.name} repoData={r.node} />)
+              .map((r: any) => (
+                <Card key={r.node.name} repoData={r.node} useImage={false} />
+              ))
               .reverse()}
         </div>
       </div>
