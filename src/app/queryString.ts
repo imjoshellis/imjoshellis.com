@@ -22,6 +22,8 @@ export const queryString = `
             homepageUrl
             pushedAt
             url
+            openGraphImageUrl
+            usesCustomOpenGraphImage
             refs(refPrefix: "refs/heads/", last: 3) {
               nodes {
                 name
@@ -118,6 +120,8 @@ export const queryString = `
             homepageUrl
             pushedAt
             url
+            openGraphImageUrl
+            usesCustomOpenGraphImage
             refs(refPrefix: "refs/heads/", last: 3) {
               nodes {
                 name
