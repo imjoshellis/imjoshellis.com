@@ -6,6 +6,7 @@ export const queryString = `
     updatedAt
     bio
     avatarUrl
+    location
     url
     status {
       emojiHTML
