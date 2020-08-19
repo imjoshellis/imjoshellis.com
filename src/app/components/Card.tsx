@@ -31,10 +31,13 @@ moment.updateLocale('en', {
 
 interface CardPropTypes {
   repoData: any
-  img?: string
+  useImage: boolean
 }
 
-export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
+export const Card: FunctionComponent<CardPropTypes> = ({
+  repoData,
+  useImage
+}) => {
   let classes = {
     wrap: 'shadow h-full flex flex-col',
     base:
@@ -101,10 +104,10 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
                 ))}
           </div>
         </div>
-        {img && (
+        {repoData.usesCustomOpenGraphImage && useImage && (
           <div className='relative pb-2/5'>
             <img
-              src={img}
+              src={repoData.openGraphImageUrl}
               alt={repoName + ' image'}
               className='absolute object-cover w-full h-full'
             />
