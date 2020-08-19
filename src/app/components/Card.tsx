@@ -8,6 +8,7 @@ import {
   Terminal
 } from '../../assets/heroicons/outline'
 import Tag from './Tag'
+import IconDetail from './IconDetail'
 
 moment.updateLocale('en', {
   relativeTime: {
@@ -124,33 +125,40 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
             {repoData.description ? repoData.description : 'No description'}
           </div>
           <div className='w-6 my-3 ml-4 border border-l-0 border-r-0 rounded border-gray-70' />
-          <div className='pb-3'>
-            <div className='flex items-center px-4 text-xs text-gray-30'>
-              <ChatAlt className='w-3 h-3 mr-1 text-green-40' />
-              <div className='truncate'>{lastCommitMsg}</div>
-            </div>
-            <div className='flex items-center px-4 text-xs text-gray-30'>
-              <Clock className='w-3 h-3 mr-1 text-green-40' />
-              <div>
-                {lastCommitTime} <span className='text-gray-50'>on</span>{' '}
-                {lastCommitBranch}
-                {lastCommitTime.match(/[ms]/) && (
-                  <>
-                    <span role='img' aria-label='sparkles emoji'>
-                      {' '}
-                      ✨️
-                    </span>
-                  </>
-                )}
-              </div>
-            </div>
-            <div className='flex items-center px-4 text-xs text-gray-30'>
-              <Terminal className='w-3 h-3 mr-1 text-green-40' />
-              <div>
-                {commitCount} commits <span className='text-gray-50'>on</span>{' '}
-                {branchCount} {branchCount > 1 ? 'branches' : 'branch'}
-              </div>
-            </div>
+          <div className='px-4 pb-3'>
+            <IconDetail
+              icon={<ChatAlt />}
+              size='sm'
+              text={<div className='w-full truncate'>{lastCommitMsg}</div>}
+            />
+            <IconDetail
+              icon={<Clock />}
+              size='sm'
+              text={
+                <div>
+                  {lastCommitTime} <span className='text-gray-50'>on</span>{' '}
+                  {lastCommitBranch}
+                  {lastCommitTime.match(/[ms]/) && (
+                    <>
+                      <span role='img' aria-label='sparkles emoji'>
+                        {' '}
+                        ✨️
+                      </span>
+                    </>
+                  )}
+                </div>
+              }
+            />
+            <IconDetail
+              icon={<Terminal />}
+              size='sm'
+              text={
+                <div>
+                  {commitCount} commits <span className='text-gray-50'>on</span>{' '}
+                  {branchCount} {branchCount > 1 ? 'branches' : 'branch'}
+                </div>
+              }
+            />
           </div>
         </div>
       </div>
