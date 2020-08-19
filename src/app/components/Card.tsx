@@ -80,6 +80,12 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
   const lastCommitBranch = recentRef.name
   const repoLink = repoData.url
   const demoLink = repoData.homepageUrl
+  const repoName = repoData.name.includes('frontend')
+    ? repoData.name
+        .replace('frontend', '(frontend)')
+        .split('-')
+        .join(' ')
+    : repoData.name.split('-').join(' ')
 
   return (
     <div className={classes.wrap}>
@@ -98,7 +104,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
           <div className='relative pb-2/5'>
             <img
               src={img}
-              alt={repoData.name + ' image'}
+              alt={repoName + ' image'}
               className='absolute object-cover w-full h-full'
             />
           </div>
@@ -111,7 +117,7 @@ export const Card: FunctionComponent<CardPropTypes> = ({ repoData, img }) => {
               rel='noopener noreferrer'
               className='transition duration-200 text-gray-20 hover:text-gray-10'
             >
-              {repoData.name.split('-').join(' ')}
+              {repoName}
             </a>
           </h3>
           <div className='flex-grow px-4 text-sm text-gray-30'>
