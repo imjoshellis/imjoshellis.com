@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
 import moment from 'moment'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import Card from './Card'
 
 const GET_FEATURED_REPOS = gql`
@@ -51,7 +51,7 @@ const GET_FEATURED_REPOS = gql`
 
 interface FeaturedReposProps {}
 
-export const FeaturedRepos: FunctionComponent<FeaturedReposProps> = () => {
+export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
   const { loading, error, data } = useQuery(GET_FEATURED_REPOS)
 
   const featuredRepoList = [] as any[]

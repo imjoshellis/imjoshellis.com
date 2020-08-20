@@ -1,5 +1,5 @@
 import moment from 'moment'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import {
   ChatAlt,
   Clock,
@@ -34,10 +34,7 @@ interface CardPropTypes {
   useImage: boolean
 }
 
-export const Card: FunctionComponent<CardPropTypes> = ({
-  repoData,
-  useImage
-}) => {
+export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
   let classes = {
     wrap: 'shadow h-full flex flex-col',
     base:

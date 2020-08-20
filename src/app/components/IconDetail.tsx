@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 
 interface IconDetailProps {
   icon: ReactElement
@@ -23,11 +23,7 @@ const toNum = (size: string) => {
   }
 }
 
-export const IconDetail: FunctionComponent<IconDetailProps> = ({
-  icon,
-  text,
-  size
-}) => (
+export const IconDetail: React.FC<IconDetailProps> = ({ icon, text, size }) => (
   <>
     {/* empty div with all possible classes for tailwindcss build purge */}
     <div className='hidden w-2 w-3 w-4 w-5 w-6 h-2 h-3 h-4 h-5 h-6 text-xs text-sm text-lg text-xl text-md ' />

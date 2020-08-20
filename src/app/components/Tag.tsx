@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 interface TagProps {
   name: string
 }
 
-export const Tag: FunctionComponent<TagProps> = ({ name }) => {
+export const Tag: React.FC<TagProps> = ({ name }) => {
   const generateTagWrap = (name: string) => {
     const classnames = [
       'flex flex-row items-center mr-2 mb-2 rounded text-xs shadow-md overflow-hidden transition duration-200 select-none'

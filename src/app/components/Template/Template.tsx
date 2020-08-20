@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 interface TemplatePropTypes {}
 
-export const TemplateView: FunctionComponent<TemplatePropTypes> = () => {
+export const TemplateView: React.FC<TemplatePropTypes> = () => {
   let classes = {
     base: ''
   }

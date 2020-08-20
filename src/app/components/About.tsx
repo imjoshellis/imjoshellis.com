@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import { gql, useQuery } from '@apollo/client'
 
 const GET_ABOUT = gql`
@@ -23,7 +23,7 @@ const GET_ABOUT = gql`
 
 interface AboutProps {}
 
-export const About: FunctionComponent<AboutProps> = () => {
+export const About: React.FC<AboutProps> = () => {
   const { loading, error, data } = useQuery(GET_ABOUT)
   const my = data && data.viewer
   return (

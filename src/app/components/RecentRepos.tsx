@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import { gql, useQuery } from '@apollo/client'
 import moment from 'moment'
 import Card from './Card'
@@ -66,7 +66,7 @@ const GET_RECENT_REPOS = gql`
 
 interface RecentReposProps {}
 
-export const RecentRepos: FunctionComponent<RecentReposProps> = () => {
+export const RecentRepos: React.FC<RecentReposProps> = () => {
   const { loading, error, data } = useQuery(GET_RECENT_REPOS)
 
   let lastCommitTime
