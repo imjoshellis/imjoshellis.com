@@ -146,7 +146,7 @@ export const About: React.FC<AboutProps> = () => {
               </span>
               <span className='ml-2'>{my.bio}</span>
             </div>
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col gap-4'>
               <p>
                 From 2011 to 2020, I designed and built WordPress, Shopify, and
                 SquareSpace websites and created marketing graphics for a wide
