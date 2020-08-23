@@ -20,7 +20,7 @@ export const Tag: React.FC<TagProps> = ({ name }) => {
       { name: 'svelte', classes: 'bg-orange text-red-90' },
       { name: 'typescript', classes: 'bg-cyan-60 text-cyan-20' }
     ]
-    const idx = specialNames.findIndex(o => o.name === name)
+    const idx = specialNames.findIndex(o => o.name === name.toLowerCase())
     if (idx >= 0) {
       classnames.push(specialNames[idx].classes)
     } else {
