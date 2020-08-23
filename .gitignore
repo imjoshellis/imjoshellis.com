@@ -11,23 +11,6 @@
 # production
 /build
 
-# heroicons
-src/assets/heroicons/outline/*
-src/assets/heroicons/solid/*
-
-# un-ignore outlined icons
-!src/assets/heroicons/outline/index.js
-!src/assets/heroicons/outline/ChatAlt.tsx
-!src/assets/heroicons/outline/Clock.tsx
-!src/assets/heroicons/outline/Code.tsx
-!src/assets/heroicons/outline/Link.tsx
-!src/assets/heroicons/outline/Terminal.tsx
-
-# un-ignore solid icons
-!src/assets/heroicons/solid/index.js
-!src/assets/heroicons/solid/Mail.tsx
-!src/assets/heroicons/solid/Newspaper.tsx
-
 # misc
 .DS_Store
 .env.local
