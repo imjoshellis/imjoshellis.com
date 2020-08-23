@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-function LinkIcon (props) {
+function LinkIcon (props: any) {
   return (
     <svg fill='none' viewBox='0 0 24 24' stroke='currentColor' {...props}>
       <path
