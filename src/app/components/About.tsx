@@ -173,10 +173,10 @@ export const About: React.FC<AboutProps> = () => {
                 </div>
               </div>
             </div>
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col flex-grow gap-2'>
               <h2 className='text-xl font-bold'>Experience</h2>
               <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
-                <div className='flex flex-col gap-4'>
+                <div className='flex flex-col flex-grow gap-4'>
                   <p>
                     From 2011 to 2020, I independently designed and built
                     WordPress, Shopify, and SquareSpace websites and created
