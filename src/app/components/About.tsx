@@ -139,6 +139,7 @@ export const About: React.FC<AboutProps> = () => {
             </div>
           </div>
           <div className='flex flex-col h-full col-span-2 gap-4 p-4 mt-4 rounded-md bg-gray-90 lg:mt-0'>
+            <div className='text-xl font-bold'>About Me</div>
             <div className='text-2xl'>
               <span role='img' aria-label='waving hand emoji'>
                 👋️
