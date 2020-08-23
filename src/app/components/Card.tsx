@@ -54,10 +54,10 @@ export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
       base: 'grid grid-cols-2 gap-2px text-xs font-bold uppercase',
       icon: 'h-3 w-3 mr-1',
       btn:
-        'tracking-wide flex justify-center items-center uppercase font-bold p-1 bg-gray-60 bg-gray-50 hover:bg-gray-50 hover:text-white border-2 border-transparent focus:outline-none focus:border-gray-10 transition duration-200',
+        'tracking-wide flex justify-center items-center uppercase font-bold p-1 bg-gray-70 hover:bg-gray-60 hover:text-white border-2 border-transparent focus:outline-none focus:border-gray-10 transition duration-200',
       left: 'rounded rounded-t-none rounded-r-none',
       right:
-        'bg-blue-60 rounded rounded-t-none rounded-l-none hover:bg-blue-50',
+        'bg-blue-70 rounded rounded-t-none rounded-l-none hover:bg-blue-60',
       only: 'rounded rounded-t-none col-span-2'
     }
   }

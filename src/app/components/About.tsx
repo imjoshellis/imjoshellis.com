@@ -37,7 +37,7 @@ export const About: React.FC<AboutProps> = () => {
       <div className='flex justify-between'>
         <h2 className='text-xl font-bold'>@imjoshellis</h2>
         <div className='flex gap-4 text-xs'>
-          <button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-blue-70 hover:bg-blue-50 hover:text-white focus:outline-none focus:border-blue-10'>
+          <button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-blue-70 hover:bg-blue-60 hover:text-white focus:outline-none focus:border-blue-10'>
             <Mail className='w-4 h-4 mr-1' />
             josh@imjoshellis.com
           </button>
@@ -102,7 +102,7 @@ export const About: React.FC<AboutProps> = () => {
                 href='https://github.com/imjoshellis'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'
+                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-60 hover:text-white focus:outline-none focus:border-gray-10'
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -117,7 +117,7 @@ export const About: React.FC<AboutProps> = () => {
                 href='https://linkedin.com/in/imjoshellis'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'
+                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-60 hover:text-white focus:outline-none focus:border-gray-10'
               >
                 <svg
                   className='w-3 h-3 fill-current'
@@ -132,7 +132,7 @@ export const About: React.FC<AboutProps> = () => {
                 href='https://dev.to/imjoshellis'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'
+                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-60 hover:text-white focus:outline-none focus:border-gray-10'
               >
                 <Newspaper className='w-3 h-3' />
                 <span className='ml-1'>Blog</span>
