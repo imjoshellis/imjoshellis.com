@@ -1,7 +1,8 @@
 import { gql, useQuery } from '@apollo/client'
-import React from 'react'
-import { Newspaper, Mail } from '../../assets/heroicons/solid'
 import 'mailgo/dist/mailgo.dark.min.js'
+import React from 'react'
+import { Mail, Newspaper } from '../../assets/heroicons/solid'
+import Tag from './Tag'
 
 const GET_ABOUT = gql`
   query GetAbout {
@@ -28,10 +29,31 @@ interface AboutProps {}
 export const About: React.FC<AboutProps> = () => {
   const { loading, error, data } = useQuery(GET_ABOUT)
   const my = data && data.viewer
+
+  const techTags = [
+    'JavaScript',
+    'TypeScript',
+    'Svelte',
+    'Preact',
+    'React',
+    'Redux',
+    'Ruby on Rails',
+    'PWA',
+    'SQL',
+    'GraphQL',
+    'Origami Studio',
+    'Sketch',
+    'Figma',
+    'Photoshop',
+    'Illustrator',
+    'InDesign',
+    'Adobe XD'
+  ]
+
   return (
     <div className=''>
       <div className='flex justify-between'>
-        <h2 className='text-xl font-bold'>@imjoshellis</h2>
+        <h1 className='text-xl font-bold'>@imjoshellis</h1>
         <div className='flex gap-4 text-xs'>
           <a
             href='mailto:josh@imjoshellis.com'
@@ -50,15 +72,19 @@ export const About: React.FC<AboutProps> = () => {
       {error && `Error! ${error.message}`}
       {data && (
         <div className='flex flex-col items-center py-4 lg:gap-8 lg:grid lg:grid-cols-3'>
-          <div className='flex flex-col items-center h-full overflow-hidden text-sm rounded-md bg-gray-90'>
+          <div className='flex flex-col items-center h-full gap-4 overflow-hidden text-sm rounded-md bg-gray-90'>
+            <div className='flex flex-wrap gap-2 p-4 pb-16 bg-gray-80'>
+              {techTags.map((t, idx) => (
+                <Tag name={t} key={idx} />
+              ))}
+            </div>
             <img
               src={my.avatarUrl}
-              className='w-40 mt-8 border-4 border-gray-100 rounded-full'
+              className='w-24 -mt-16 border-2 rounded-full shadow-xl border-gray-10'
               alt='My Avatar'
             />
-            <div className='p-4 text-lg font-semibold'>Josh Ellis</div>
+            <h2 className='text-xl font-bold'>Josh Ellis</h2>
             <div className='flex flex-col flex-grow gap-1 px-4'>
-              <div className='flex text-gray-30'></div>
               {my.status && (
                 <div className='flex text-gray-30'>
                   <span
@@ -68,7 +94,7 @@ export const About: React.FC<AboutProps> = () => {
                     dangerouslySetInnerHTML={{ __html: my.status.emojiHTML }}
                   />
                   <div>
-                    <span className='inline ml-1'>I'm currently</span>
+                    <span className='inline ml-1'>Currently</span>
                     <span className='inline ml-1'>{my.status.message}</span>.
                   </div>
                 </div>
@@ -96,7 +122,7 @@ export const About: React.FC<AboutProps> = () => {
                 <span className='ml-1'>Flatiron School 9/2020</span>
               </div>
             </div>
-            <div className='grid w-full grid-cols-3 text-xs font-bold uppercase gap-2px'>
+            <div className='grid w-full grid-cols-3 mt-4 text-xs font-bold uppercase gap-2px'>
               <a
                 href='https://github.com/imjoshellis'
                 target='_blank'
@@ -138,40 +164,45 @@ export const About: React.FC<AboutProps> = () => {
               </a>
             </div>
           </div>
-          <div className='flex flex-col h-full col-span-2 gap-4 p-4 mt-4 rounded-md bg-gray-90 lg:mt-0'>
-            <div className='text-xl font-bold'>About Me</div>
-            <div className='text-2xl'>
-              <span role='img' aria-label='waving hand emoji'>
-                👋️
-              </span>
-              <span className='ml-2'>{my.bio}</span>
+          <div className='flex flex-col h-full col-span-2 gap-4 mt-4 lg:mt-0'>
+            <h2 className='text-xl font-bold'>Bio</h2>
+            <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
+              <div className='text-xl'>
+                <span className=''>{my.bio}</span>
+              </div>
             </div>
-            <div className='flex flex-col gap-4'>
-              <p>
-                From 2011 to 2020, I designed and built WordPress, Shopify, and
-                SquareSpace websites and created marketing graphics for a wide
-                variety of businesses and clients.
-              </p>
-              <p>
-                In 2019, I started looking to get more into "real" development
-                and taught myself the basics of React to build a simple PWA (BG
-                Quickstart) to scratch my own itch.
-              </p>
-              <p>
-                I enjoyed the process more than I thought I would, so I
-                immediately started planning more ideas while consuming as much
-                free learning material as possible.
-              </p>
-              <p>
-                In early 2020, I decided to pursue development as a career, and
-                I chose to enroll in Flatiron School's self-paced online program
-                because I wanted to make sure I learned all the important
-                concepts of Full Stack development in a structured way.
-              </p>
-              <p className='text-lg font-bold'>
-                If you're looking for a React developer who's a self-starter,
-                eager to grow, and excited to learn, let's chat!
-              </p>
+            <h2 className='text-xl font-bold'>Experience</h2>
+            <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
+              <div className='flex flex-col gap-4'>
+                <p>
+                  From 2011 to 2020, I independently designed and built
+                  WordPress, Shopify, and SquareSpace websites and created
+                  marketing graphics for a wide variety of clients.
+                </p>
+                <p>
+                  In late 2019, I started looking to get more into "real"
+                  development and taught myself the basics of React to build a
+                  simple PWA (
+                  <a
+                    href='https://bgquickstart.com/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='transition duration-200 text-blue-40 hover:text-blue-10'
+                  >
+                    BG Quickstart
+                  </a>
+                  ) to scratch my own itch.
+                </p>
+                <p>
+                  In early 2020, I decided to pursue development as a career,
+                  and I chose to enroll in Flatiron School's self-paced online
+                  software engineering program.
+                </p>
+                <p className='text-lg font-bold'>
+                  If you're looking for a React developer who's a self-starter,
+                  eager to grow, and excited to learn, let's chat!
+                </p>
+              </div>
             </div>
           </div>
         </div>
