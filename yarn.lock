@@ -6805,6 +6805,11 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+mailgo@^0.9.14:
+  version "0.9.14"
+  resolved "https://registry.yarnpkg.com/mailgo/-/mailgo-0.9.14.tgz#fb3ea9c3dfdb7b779baa392721506767a214e173"
+  integrity sha512-WyQuAUdaKvBlJy5LIJ1QpLAkAMqfyFR4CX3j6yimAGY0kYG7pvacInogH7FO4wHDGDqk/FUbmvKuIoMDAxK0lg==
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"

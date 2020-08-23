@@ -1,11 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
 import React from 'react'
-import {
-  Newspaper,
-  Mail,
-  Document,
-  DocumentText
-} from '../../assets/heroicons/solid'
+import { Newspaper, Mail } from '../../assets/heroicons/solid'
 
 const GET_ABOUT = gql`
   query GetAbout {
