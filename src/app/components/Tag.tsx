@@ -7,7 +7,7 @@ interface TagProps {
 export const Tag: React.FC<TagProps> = ({ name }) => {
   const generateTagWrap = (name: string) => {
     const classnames = [
-      'flex flex-row items-center mr-2 mb-2 rounded text-xs shadow-md overflow-hidden transition duration-200 select-none'
+      'flex flex-row items-center rounded text-xs shadow-md overflow-hidden transition duration-200 select-none'
     ] as String[]
     const baseColor = 'bg-gray-70 text-gray-20'
     const specialNames = [
