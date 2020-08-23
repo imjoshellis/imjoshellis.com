@@ -6,7 +6,7 @@ import About from './About'
 interface MainPropTypes {}
 
 export const Main: React.FC<MainPropTypes> = () => (
-  <div className='max-w-xs mx-auto md:max-w-sm lg:max-w-5xl'>
+  <div className='max-w-xs pt-8 mx-auto md:max-w-sm lg:max-w-5xl'>
     <About />
     <FeaturedRepos />
     <RecentRepos />
