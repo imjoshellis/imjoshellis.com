@@ -41,10 +41,10 @@ export const About: React.FC<AboutProps> = () => {
             <Mail className='w-4 h-4 mr-1' />
             josh@imjoshellis.com
           </button>
-          <button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'>
+          {/*<button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'>
             <DocumentText className='w-4 h-4 mr-1' />
             resume
-          </button>
+  </button>*/}
         </div>
       </div>
       {loading && 'Loading data from GitHub...'}
