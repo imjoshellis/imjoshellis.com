@@ -103,12 +103,19 @@ export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
         </div>
         {repoData.usesCustomOpenGraphImage && useImage && (
           <div className='px-4 pb-4 bg-gray-80'>
-            <div className='relative pb-1/2'>
-              <img
-                src={repoData.openGraphImageUrl}
-                alt={repoName + ' image'}
-                className='absolute object-cover w-full h-full border border-gray-100 rounded'
-              />
+            <div className='overflow-hidden bg-gray-100 rounded p-2px'>
+              <div className='flex p-1'>
+                <div className='w-1.5 h-1.5 rounded-full bg-gray-70' />
+                <div className='w-1.5 h-1.5 ml-1 rounded-full bg-gray-70' />
+                <div className='w-1.5 h-1.5 ml-1 rounded-full bg-gray-70' />
+              </div>
+              <div className='relative pb-1/2'>
+                <img
+                  src={repoData.openGraphImageUrl}
+                  alt={repoName + ' image'}
+                  className='absolute object-cover w-full h-full rounded-b-sm'
+                />
+              </div>
             </div>
           </div>
         )}
