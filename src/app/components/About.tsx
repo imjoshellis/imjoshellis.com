@@ -1,6 +1,7 @@
 import { gql, useQuery } from '@apollo/client'
 import React from 'react'
 import { Newspaper, Mail } from '../../assets/heroicons/solid'
+import 'mailgo/dist/mailgo.dark.min.js'
 
 const GET_ABOUT = gql`
   query GetAbout {
@@ -32,10 +33,13 @@ export const About: React.FC<AboutProps> = () => {
       <div className='flex justify-between'>
         <h2 className='text-xl font-bold'>@imjoshellis</h2>
         <div className='flex gap-4 text-xs'>
-          <button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-blue-70 hover:bg-blue-60 hover:text-white focus:outline-none focus:border-blue-10'>
+          <a
+            href='mailto:josh@imjoshellis.com'
+            className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-blue-70 hover:bg-blue-60 hover:text-white focus:outline-none focus:border-blue-10'
+          >
             <Mail className='w-4 h-4 mr-1' />
             josh@imjoshellis.com
-          </button>
+          </a>
           {/*<button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'>
             <DocumentText className='w-4 h-4 mr-1' />
             resume
