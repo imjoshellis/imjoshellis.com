@@ -79,7 +79,7 @@ export const RecentRepos: React.FC<RecentReposProps> = () => {
     <>
       <div className='mt-8'>
         <h2 className='flex items-baseline py-2 text-xl font-bold'>
-          Current Projects{' '}
+          Recent Activity{' '}
           {data && (
             <div className='ml-2 text-sm font-normal text-gray-30'>
               (last commit {lastCommitTime}){' '}
