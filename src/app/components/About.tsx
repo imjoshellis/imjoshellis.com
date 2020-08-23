@@ -1,5 +1,6 @@
-import React from 'react'
 import { gql, useQuery } from '@apollo/client'
+import React from 'react'
+import { Newspaper } from '../../assets/heroicons/solid'
 
 const GET_ABOUT = gql`
   query GetAbout {
@@ -27,24 +28,19 @@ export const About: React.FC<AboutProps> = () => {
   const { loading, error, data } = useQuery(GET_ABOUT)
   const my = data && data.viewer
   return (
-    <div>
+    <div className=''>
       <h2 className='py-2 text-xl font-bold'>About Josh Ellis</h2>
       {loading && 'Loading data from GitHub...'}
       {error && `Error! ${error.message}`}
       {data && (
-        <div className='flex items-center'>
-          <div className=''>
+        <div className='flex flex-col items-center py-4 lg:gap-6 lg:grid lg:grid-cols-3'>
+          <div className='flex flex-col items-center overflow-hidden text-sm rounded-md bg-gray-90'>
             <img
               src={my.avatarUrl}
-              className='w-40 rounded-full'
+              className='w-40 mt-8 border-4 border-gray-100 rounded-full'
               alt='My Avatar'
             />
-          </div>
-          <div className='flex flex-col ml-4 text-xl'>
-            <div>
-              <span>{my.bio}</span>
-            </div>
-            <div className='flex flex-col text-base'>
+            <div className='flex flex-col p-4'>
               <div className='flex text-gray-30'>
                 {!my.isHireable ? (
                   <>
@@ -75,8 +71,10 @@ export const About: React.FC<AboutProps> = () => {
                     className='mr-1'
                     dangerouslySetInnerHTML={{ __html: my.status.emojiHTML }}
                   />
-                  <span className='ml-1'>I'm currently</span>
-                  <span className='ml-1'>{my.status.message}</span>.
+                  <div>
+                    <span className='inline ml-1'>I'm currently</span>
+                    <span className='inline ml-1'>{my.status.message}</span>.
+                  </div>
                 </div>
               )}
               {my.location && (
@@ -101,6 +99,52 @@ export const About: React.FC<AboutProps> = () => {
                 </span>
                 <span className='ml-1'>Flatiron School 9/2020</span>
               </div>
+            </div>
+            <div className='grid w-full grid-cols-3 text-xs font-bold uppercase gap-2px'>
+              <a
+                href='https://github.com/imjoshellis'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='w-3 h-3 fill-current'
+                  viewBox='0 0 20 20'
+                >
+                  <path d='M13.18 11.309c-.718 0-1.3.807-1.3 1.799 0 .994.582 1.801 1.3 1.801s1.3-.807 1.3-1.801c-.001-.992-.582-1.799-1.3-1.799zm4.526-4.683c.149-.365.155-2.439-.635-4.426 0 0-1.811.199-4.551 2.08-.575-.16-1.548-.238-2.519-.238-.973 0-1.945.078-2.52.238C4.74 2.399 2.929 2.2 2.929 2.2c-.789 1.987-.781 4.061-.634 4.426C1.367 7.634.8 8.845.8 10.497c0 7.186 5.963 7.301 7.467 7.301l1.734.002 1.732-.002c1.506 0 7.467-.115 7.467-7.301 0-1.652-.566-2.863-1.494-3.871zm-7.678 10.289h-.056c-3.771 0-6.709-.449-6.709-4.115 0-.879.31-1.693 1.047-2.369C5.537 9.304 7.615 9.9 9.972 9.9h.056c2.357 0 4.436-.596 5.664.531.735.676 1.045 1.49 1.045 2.369 0 3.666-2.937 4.115-6.709 4.115zm-3.207-5.606c-.718 0-1.3.807-1.3 1.799 0 .994.582 1.801 1.3 1.801.719 0 1.301-.807 1.301-1.801 0-.992-.582-1.799-1.301-1.799z' />
+                </svg>
+                <span className='ml-1'>GitHub</span>
+              </a>
+              <a
+                href='https://linkedin.com/in/imjoshellis'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'
+              >
+                <svg
+                  className='w-3 h-3 fill-current'
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 20 20'
+                >
+                  <path d='M10 .4C4.698.4.4 4.698.4 10s4.298 9.6 9.6 9.6 9.6-4.298 9.6-9.6S15.302.4 10 .4zM7.65 13.979H5.706V7.723H7.65v6.256zm-.984-7.024c-.614 0-1.011-.435-1.011-.973 0-.549.409-.971 1.036-.971s1.011.422 1.023.971c0 .538-.396.973-1.048.973zm8.084 7.024h-1.944v-3.467c0-.807-.282-1.355-.985-1.355-.537 0-.856.371-.997.728-.052.127-.065.307-.065.486v3.607H8.814v-4.26c0-.781-.025-1.434-.051-1.996h1.689l.089.869h.039c.256-.408.883-1.01 1.932-1.01 1.279 0 2.238.857 2.238 2.699v3.699z' />
+                </svg>
+                <span className='ml-1'>LinkedIn</span>
+              </a>
+              <a
+                href='https://dev.to/imjoshellis'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center justify-center p-1 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'
+              >
+                <Newspaper className='w-3 h-3' />
+                <span className='ml-1'>Blog</span>
+              </a>
+            </div>
+          </div>
+          <div className='flex flex-col col-span-2 mt-4 text-xl lg:ml-4 lg:mt-0'>
+            <div className='pb-2'>
+              <span>{my.bio}</span>
             </div>
           </div>
         </div>
