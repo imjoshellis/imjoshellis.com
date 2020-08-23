@@ -17,16 +17,16 @@ src/assets/heroicons/solid/*
 
 # un-ignore outlined icons
 !src/assets/heroicons/outline/index.js
-!src/assets/heroicons/outline/ChatAlt.jsx
-!src/assets/heroicons/outline/Clock.jsx
-!src/assets/heroicons/outline/Code.jsx
-!src/assets/heroicons/outline/Link.jsx
-!src/assets/heroicons/outline/Terminal.jsx
+!src/assets/heroicons/outline/ChatAlt.tsx
+!src/assets/heroicons/outline/Clock.tsx
+!src/assets/heroicons/outline/Code.tsx
+!src/assets/heroicons/outline/Link.tsx
+!src/assets/heroicons/outline/Terminal.tsx
 
 # un-ignore solid icons
 !src/assets/heroicons/solid/index.js
-!src/assets/heroicons/solid/Mail.jsx
-!src/assets/heroicons/solid/Newspaper.jsx
+!src/assets/heroicons/solid/Mail.tsx
+!src/assets/heroicons/solid/Newspaper.tsx
 
 # misc
 .DS_Store
