@@ -52,7 +52,7 @@ export const About: React.FC<AboutProps> = () => {
 
   return (
     <div className=''>
-      <div className='flex justify-between'>
+      <div className='flex flex-wrap justify-between gap-2'>
         <h1 className='text-xl font-bold'>@imjoshellis</h1>
         <div className='flex gap-4 text-xs'>
           <a
@@ -165,43 +165,48 @@ export const About: React.FC<AboutProps> = () => {
             </div>
           </div>
           <div className='flex flex-col h-full col-span-2 gap-4 mt-4 lg:mt-0'>
-            <h2 className='text-xl font-bold'>Bio</h2>
-            <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
-              <div className='text-xl'>
-                <span className=''>{my.bio}</span>
+            <div className='flex flex-col gap-2'>
+              <h2 className='text-xl font-bold'>Bio</h2>
+              <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
+                <div className='text-xl'>
+                  <span className=''>{my.bio}</span>
+                </div>
               </div>
             </div>
-            <h2 className='text-xl font-bold'>Experience</h2>
-            <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
-              <div className='flex flex-col gap-4'>
-                <p>
-                  From 2011 to 2020, I independently designed and built
-                  WordPress, Shopify, and SquareSpace websites and created
-                  marketing graphics for a wide variety of clients.
-                </p>
-                <p>
-                  In late 2019, I started looking to get more into "real"
-                  development and taught myself the basics of React to build a
-                  simple PWA (
-                  <a
-                    href='https://bgquickstart.com/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='transition duration-200 text-blue-40 hover:text-blue-10'
-                  >
-                    BG Quickstart
-                  </a>
-                  ) to scratch my own itch.
-                </p>
-                <p>
-                  In early 2020, I decided to pursue development as a career,
-                  and I chose to enroll in Flatiron School's self-paced online
-                  software engineering program.
-                </p>
-                <p className='text-lg font-bold'>
-                  If you're looking for a React developer who's a self-starter,
-                  eager to grow, and excited to learn, let's chat!
-                </p>
+            <div className='flex flex-col gap-2'>
+              <h2 className='text-xl font-bold'>Experience</h2>
+              <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
+                <div className='flex flex-col gap-4'>
+                  <p>
+                    From 2011 to 2020, I independently designed and built
+                    WordPress, Shopify, and SquareSpace websites and created
+                    marketing graphics for a wide variety of clients.
+                  </p>
+                  <p>
+                    In late 2019, I started looking to get more into "real"
+                    development and taught myself the basics of React to build a
+                    simple PWA (
+                    <a
+                      href='https://bgquickstart.com/'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='transition duration-200 text-blue-40 hover:text-blue-10'
+                    >
+                      BG Quickstart
+                    </a>
+                    ) to scratch my own itch.
+                  </p>
+                  <p>
+                    In early 2020, I decided to pursue development as a career,
+                    and I chose to enroll in Flatiron School's self-paced online
+                    software engineering program.
+                  </p>
+                  <p className='text-lg font-bold'>
+                    If you're looking for a React developer who's a
+                    self-starter, eager to grow, and excited to learn, let's
+                    chat!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
