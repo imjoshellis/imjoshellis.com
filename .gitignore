@@ -12,18 +12,21 @@
 /build
 
 # heroicons
-/src/assets/heroicons/**/*
+src/assets/heroicons/outline/*
+src/assets/heroicons/solid/*
 
 # un-ignore outlined icons
-!/src/assets/heroicons/outline/ChatAlt.jsx
-!/src/assets/heroicons/outline/Clock.jsx
-!/src/assets/heroicons/outline/Code.jsx
-!/src/assets/heroicons/outline/Link.jsx
-!/src/assets/heroicons/outline/Terminal.jsx
+!src/assets/heroicons/outline/index.js
+!src/assets/heroicons/outline/ChatAlt.jsx
+!src/assets/heroicons/outline/Clock.jsx
+!src/assets/heroicons/outline/Code.jsx
+!src/assets/heroicons/outline/Link.jsx
+!src/assets/heroicons/outline/Terminal.jsx
 
 # un-ignore solid icons
-!/src/assets/heroicons/solic/Mail.jsx
-!/src/assets/heroicons/solic/Newspaper.jsx
+!src/assets/heroicons/solid/index.js
+!src/assets/heroicons/solid/Mail.jsx
+!src/assets/heroicons/solid/Newspaper.jsx
 
 # misc
 .DS_Store
