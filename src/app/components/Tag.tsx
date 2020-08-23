@@ -12,13 +12,13 @@ export const Tag: React.FC<TagProps> = ({ name }) => {
     const baseColor = 'bg-gray-70 text-gray-20'
     const specialNames = [
       { name: 'apollo', classes: 'bg-purple-70 text-purple-20' },
-      { name: 'graphql', classes: 'bg-pink-60 text-pink-20' },
+      { name: 'graphql', classes: 'bg-pink-70 text-pink-20' },
       { name: 'javascript', classes: 'bg-yellow text-red-90' },
-      { name: 'react', classes: 'bg-teal-60 text-teal-20' },
+      { name: 'react', classes: 'bg-teal-70 text-teal-20' },
       { name: 'redux', classes: 'bg-purple-70 text-purple-20' },
       { name: 'ruby on rails', classes: 'bg-red-70 text-red-20' },
       { name: 'svelte', classes: 'bg-orange text-red-90' },
-      { name: 'typescript', classes: 'bg-cyan-60 text-cyan-20' }
+      { name: 'typescript', classes: 'bg-cyan-70 text-cyan-20' }
     ]
     const idx = specialNames.findIndex(o => o.name === name.toLowerCase())
     if (idx >= 0) {
