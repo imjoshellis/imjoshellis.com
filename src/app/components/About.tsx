@@ -99,7 +99,7 @@ export const About: React.FC<AboutProps> = () => {
                 <span role='img' aria-label='Graduate Emoji' className='mr-1'>
                   👨🏻‍🎓
                 </span>
-                <span className='ml-1'>Flatiron School 8/2020</span>
+                <span className='ml-1'>Flatiron School 9/2020</span>
               </div>
             </div>
           </div>
