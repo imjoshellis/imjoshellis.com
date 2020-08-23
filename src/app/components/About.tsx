@@ -34,7 +34,19 @@ export const About: React.FC<AboutProps> = () => {
   const my = data && data.viewer
   return (
     <div className=''>
-      <h2 className='py-2 text-xl font-bold'>About Josh Ellis</h2>
+      <div className='flex justify-between'>
+        <h2 className='text-xl font-bold'>@imjoshellis</h2>
+        <div className='flex gap-4 text-xs'>
+          <button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-blue-70 hover:bg-blue-50 hover:text-white focus:outline-none focus:border-blue-10'>
+            <Mail className='w-4 h-4 mr-1' />
+            josh@imjoshellis.com
+          </button>
+          <button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'>
+            <DocumentText className='w-4 h-4 mr-1' />
+            resume
+          </button>
+        </div>
+      </div>
       {loading && 'Loading data from GitHub...'}
       {error && `Error! ${error.message}`}
       {data && (
@@ -45,7 +57,8 @@ export const About: React.FC<AboutProps> = () => {
               className='w-40 mt-8 border-4 border-gray-100 rounded-full'
               alt='My Avatar'
             />
-            <div className='flex flex-col flex-grow gap-1 p-4'>
+            <div className='p-4 text-lg font-semibold'>Josh Ellis</div>
+            <div className='flex flex-col flex-grow gap-1 px-4'>
               <div className='flex text-gray-30'></div>
               {my.status && (
                 <div className='flex text-gray-30'>
@@ -127,17 +140,7 @@ export const About: React.FC<AboutProps> = () => {
             </div>
           </div>
           <div className='flex flex-col h-full col-span-2 gap-4 p-4 mt-4 rounded-md bg-gray-90 lg:mt-0'>
-            <div className='flex gap-4 text-sm'>
-              <button className='flex items-center justify-center p-1 px-4 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-blue-70 hover:bg-blue-50 hover:text-white focus:outline-none focus:border-blue-10'>
-                <Mail className='w-4 h-4 mr-1' />
-                josh@imjoshellis.com
-              </button>
-              <button className='flex items-center justify-center p-1 px-4 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'>
-                <DocumentText className='w-4 h-4 mr-1' />
-                resume
-              </button>
-            </div>
-            <div className='text-xl'>
+            <div className='text-2xl'>
               <span role='img' aria-label='waving hand emoji'>
                 👋️
               </span>
