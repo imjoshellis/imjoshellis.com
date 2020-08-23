@@ -78,10 +78,10 @@ export const RecentRepos: React.FC<RecentReposProps> = () => {
   return (
     <>
       <div className='mt-8'>
-        <h2 className='flex items-baseline py-2 text-xl font-bold'>
+        <h2 className='flex flex-col items-baseline py-2 text-xl font-bold md:gap-2 md:flex-row'>
           Recent Activity{' '}
           {data && (
-            <div className='ml-2 text-sm font-normal text-gray-30'>
+            <div className='text-sm font-normal text-gray-30'>
               (last commit {lastCommitTime}){' '}
               {lastCommitTime.match(/[ms]/) && (
                 <>
