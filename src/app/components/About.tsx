@@ -1,6 +1,11 @@
 import { gql, useQuery } from '@apollo/client'
 import React from 'react'
-import { Newspaper } from '../../assets/heroicons/solid'
+import {
+  Newspaper,
+  Mail,
+  Document,
+  DocumentText
+} from '../../assets/heroicons/solid'
 
 const GET_ABOUT = gql`
   query GetAbout {
@@ -33,36 +38,15 @@ export const About: React.FC<AboutProps> = () => {
       {loading && 'Loading data from GitHub...'}
       {error && `Error! ${error.message}`}
       {data && (
-        <div className='flex flex-col items-center py-4 lg:gap-6 lg:grid lg:grid-cols-3'>
-          <div className='flex flex-col items-center overflow-hidden text-sm rounded-md bg-gray-90'>
+        <div className='flex flex-col items-center py-4 lg:gap-8 lg:grid lg:grid-cols-3'>
+          <div className='flex flex-col items-center h-full overflow-hidden text-sm rounded-md bg-gray-90'>
             <img
               src={my.avatarUrl}
               className='w-40 mt-8 border-4 border-gray-100 rounded-full'
               alt='My Avatar'
             />
-            <div className='flex flex-col p-4'>
-              <div className='flex text-gray-30'>
-                {!my.isHireable ? (
-                  <>
-                    <span role='img' aria-label='zzz emoji' className='mr-1'>
-                      💤️
-                    </span>
-                    <span className='ml-1'>
-                      Not actively looking for work, but let's connect anyway.
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span role='img' aria-label='eyes emoji' className='mr-1'>
-                      👀
-                    </span>
-                    <span className='ml-1'>
-                      Actively looking for a new opportunity as a frontend dev
-                      for a productivity startup.
-                    </span>
-                  </>
-                )}
-              </div>
+            <div className='flex flex-col flex-grow gap-1 p-4'>
+              <div className='flex text-gray-30'></div>
               {my.status && (
                 <div className='flex text-gray-30'>
                   <span
@@ -142,9 +126,49 @@ export const About: React.FC<AboutProps> = () => {
               </a>
             </div>
           </div>
-          <div className='flex flex-col col-span-2 mt-4 text-xl lg:ml-4 lg:mt-0'>
-            <div className='pb-2'>
-              <span>{my.bio}</span>
+          <div className='flex flex-col h-full col-span-2 gap-4 p-4 mt-4 rounded-md bg-gray-90 lg:mt-0'>
+            <div className='flex gap-4 text-sm'>
+              <button className='flex items-center justify-center p-1 px-4 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-blue-70 hover:bg-blue-50 hover:text-white focus:outline-none focus:border-blue-10'>
+                <Mail className='w-4 h-4 mr-1' />
+                josh@imjoshellis.com
+              </button>
+              <button className='flex items-center justify-center p-1 px-4 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'>
+                <DocumentText className='w-4 h-4 mr-1' />
+                resume
+              </button>
+            </div>
+            <div className='text-xl'>
+              <span role='img' aria-label='waving hand emoji'>
+                👋️
+              </span>
+              <span className='ml-2'>{my.bio}</span>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <p>
+                From 2011 to 2020, I designed and built WordPress, Shopify, and
+                SquareSpace websites and created marketing graphics for a wide
+                variety of businesses and clients.
+              </p>
+              <p>
+                In 2019, I started looking to get more into "real" development
+                and taught myself the basics of React to build a simple PWA (BG
+                Quickstart) to scratch my own itch.
+              </p>
+              <p>
+                I enjoyed the process more than I thought I would, so I
+                immediately started planning more ideas while consuming as much
+                free learning material as possible.
+              </p>
+              <p>
+                In early 2020, I decided to pursue development as a career, and
+                I chose to enroll in Flatiron School's self-paced online program
+                because I wanted to make sure I learned all the important
+                concepts of Full Stack development in a structured way.
+              </p>
+              <p className='text-lg font-bold'>
+                If you're looking for a React developer who's a self-starter,
+                eager to grow, and excited to learn, let's chat!
+              </p>
             </div>
           </div>
         </div>
