@@ -10,25 +10,6 @@ import {
 import Tag from './Tag'
 import IconDetail from './IconDetail'
 
-moment.updateLocale('en', {
-  relativeTime: {
-    future: 'in %s',
-    past: '%s ago',
-    s: '%ds',
-    ss: '%ds',
-    m: '%dm',
-    mm: '%dm',
-    h: '%dh',
-    hh: '%dh',
-    d: '%dd',
-    dd: '%dd',
-    M: '%dm',
-    MM: '%dm',
-    y: '%dy',
-    yy: '%dy'
-  }
-})
-
 interface CardPropTypes {
   repoData: any
   useImage: boolean
