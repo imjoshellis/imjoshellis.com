@@ -7,6 +7,26 @@ import {
 import React from 'react'
 import Main from './components/Main'
 import queryString from './queryString'
+import moment from 'moment'
+
+moment.updateLocale('en', {
+  relativeTime: {
+    future: 'in %s',
+    past: '%s ago',
+    s: '%ds',
+    ss: '%ds',
+    m: '%dm',
+    mm: '%dm',
+    h: '%dh',
+    hh: '%dh',
+    d: '%dd',
+    dd: '%dd',
+    M: '%dmo',
+    MM: '%dmo',
+    y: '%dyr',
+    yy: '%dyr'
+  }
+})
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
