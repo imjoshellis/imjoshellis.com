@@ -2,6 +2,7 @@ import React from 'react'
 import RecentRepos from './RecentRepos'
 import FeaturedRepos from './FeaturedRepos'
 import About from './About'
+import BlogPosts from './BlogPosts'
 
 interface MainPropTypes {}
 
@@ -10,6 +11,7 @@ export const Main: React.FC<MainPropTypes> = () => (
     <About />
     <FeaturedRepos />
     <RecentRepos />
+    <BlogPosts />
   </div>
 )
 
