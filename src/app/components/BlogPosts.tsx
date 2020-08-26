@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
 import moment from 'moment'
+import React, { useEffect, useState } from 'react'
+import HeartIcon from '../../assets/heroicons/outline/Heart'
 import Tag from './Tag'
+import ChatIcon from '../../assets/heroicons/outline/Chat'
 
 interface BlogPostsProps {}
 
@@ -67,34 +69,27 @@ export const BlogPosts: React.FC<BlogPostsProps> = () => {
           </div>
         )}
       </h2>
-      <div className='flex flex-col gap-4 md:grid md:grid-cols-2'>
+      <div className='flex flex-col gap-6 md:grid md:grid-cols-2'>
         {state === undefined
           ? 'Loading posts from DEV.to'
-          : state.map(p => (
-              <div className='flex flex-col gap-2'>
+          : state.slice(0, 6).map(p => (
+              <div className='flex flex-col max-w-md gap-2 pb-2 text-gray-30'>
                 <div className='flex flex-col'>
                   <h3>
                     <a
-                      className='text-xl font-bold duration-200 text-gray-30 transition-color hover:text-gray-10'
+                      className='text-xl font-bold duration-200 text-gray-10 transition-color hover:text-blue-40'
                       href={p.url}
                     >
                       {p.title}
                     </a>
                   </h3>
-                  <p className='text-sm text-gray-50'>
-                    <span>{moment(p.published_at).fromNow()}</span>
-                    <span> • </span>
-                    <span>
-                      {p.public_reactions_count}{' '}
-                      {p.public_reactions_count === 1
-                        ? 'reaction'
-                        : 'reactions'}
-                    </span>
-                    <span> • </span>
-                    <span>
-                      {p.comments_count}{' '}
-                      {p.comments_count === 1 ? 'comment' : 'comments'}
-                    </span>
+                  <p className='flex items-center text-sm text-gray-50'>
+                    {moment(p.published_at, moment.ISO_8601).fromNow()}
+                    <span className='px-1 opacity-50'> • </span>
+                    {p.public_reactions_count}{' '}
+                    <HeartIcon className='w-4 h-4 ml-1' />
+                    <span className='px-1 opacity-50'> • </span>
+                    {p.comments_count} <ChatIcon className='w-4 h-4 ml-1' />
                   </p>
                 </div>
                 <div className='flex gap-2'>
@@ -102,15 +97,13 @@ export const BlogPosts: React.FC<BlogPostsProps> = () => {
                     <Tag name={t} />
                   ))}
                 </div>
-                <p>
-                  {p.description + ' '}
-                  <a
-                    href={p.url}
-                    className='duration-200 text-gray-30 transition-color hover:text-gray-10 '
-                  >
-                    (read on Dev.to)
-                  </a>
-                </p>
+                <p>{p.description}</p>
+                <a
+                  href={p.url}
+                  className='duration-200 text-gray-10 transition-color hover:text-blue-40 '
+                >
+                  (read on Dev.to)
+                </a>
               </div>
             ))}
       </div>
