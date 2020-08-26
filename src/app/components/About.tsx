@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client'
 import 'mailgo/dist/mailgo.dark.min.js'
 import React from 'react'
-import { Mail, Newspaper } from '../../assets/heroicons/solid'
+import { Newspaper } from '../../assets/heroicons/solid'
 import Tag from './Tag'
 
 const GET_ABOUT = gql`
@@ -52,22 +52,6 @@ export const About: React.FC<AboutProps> = () => {
 
   return (
     <div className=''>
-      <div className='flex flex-wrap justify-between gap-2'>
-        <h1 className='text-xl font-bold'>@imjoshellis</h1>
-        <div className='flex gap-4 text-xs'>
-          <a
-            href='mailto:josh@imjoshellis.com'
-            className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-blue-70 hover:bg-blue-60 hover:text-white focus:outline-none focus:border-blue-10'
-          >
-            <Mail className='w-4 h-4 mr-1' />
-            josh@imjoshellis.com
-          </a>
-          {/*<button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'>
-            <DocumentText className='w-4 h-4 mr-1' />
-            resume
-  </button>*/}
-        </div>
-      </div>
       {loading && 'Loading data from GitHub...'}
       {error && `Error! ${error.message}`}
       {data && (
