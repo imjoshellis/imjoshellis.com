@@ -195,6 +195,11 @@ module.exports = {
     ]
   },
   theme: {
+    backdropFilter: {
+      // defaults to {}
+      none: 'none',
+      blur: 'blur(2px)'
+    },
     minWidth: {
       0: '0',
       '1/4': '25%',
@@ -255,5 +260,5 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [require('tailwindcss-filters')]
 }
