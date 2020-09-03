@@ -1,8 +1,9 @@
 import { gql, useQuery } from '@apollo/client'
 import 'mailgo/dist/mailgo.dark.min.js'
-import React from 'react'
-import { Newspaper } from '../../assets/heroicons/solid'
+import React, { useState } from 'react'
+import { Newspaper, ChevronDown, ChevronUp } from '../../assets/heroicons/solid'
 import Tag from './Tag'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const GET_ABOUT = gql`
   query GetAbout {
@@ -28,6 +29,7 @@ interface AboutProps {}
 
 export const About: React.FC<AboutProps> = () => {
   const { loading, error, data } = useQuery(GET_ABOUT)
+  const [readMore, setReadMore] = useState(false)
   const my = data && data.viewer
 
   const techTags = [
@@ -64,7 +66,7 @@ export const About: React.FC<AboutProps> = () => {
             </div>
             <img
               src={my.avatarUrl}
-              className='w-24 -mt-16 border-2 rounded-full shadow-xl border-gray-10'
+              className='w-24 -mt-16 rounded-full shadow-xl'
               alt='My Avatar'
             />
             <h2 className='text-xl font-bold'>Josh Ellis</h2>
@@ -152,43 +154,136 @@ export const About: React.FC<AboutProps> = () => {
             <div className='flex flex-col gap-2'>
               <h2 className='text-xl font-bold'>Bio</h2>
               <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
-                <div className='text-xl'>
-                  <span className=''>{my.bio}</span>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-col flex-grow gap-2'>
-              <h2 className='text-xl font-bold'>Experience</h2>
-              <div className='flex flex-col h-full gap-4 p-4 rounded-md bg-gray-90 lg:mt-0'>
-                <div className='flex flex-col flex-grow gap-4'>
+                <div className='grid grid-flow-row gap-4'>
                   <p>
-                    From 2011 to 2020, I independently designed and built
-                    WordPress, Shopify, and SquareSpace websites and created
-                    marketing graphics for a wide variety of clients.
+                    <span className=''>{my.bio}</span>
                   </p>
                   <p>
-                    In late 2019, I started looking to get more into "real"
-                    development and taught myself the basics of React to build a
-                    simple PWA (
-                    <a
-                      href='https://bgquickstart.com/'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='transition duration-200 text-blue-40 hover:text-blue-10'
-                    >
-                      BG Quickstart
-                    </a>
-                    ) to scratch my own itch.
+                    Innovative tech excites me, especially when it's related to
+                    productivity, minimalism, mental health, tabletop games, or
+                    travel. Though I focus on the front end of web development
+                    using TypeScript/JavaScript frameworks like React, I'm
+                    experienced building both Express/NodeJS and Ruby on Rails
+                    on the back end.
                   </p>
+
                   <p>
-                    In early 2020, I decided to pursue development as a career,
-                    and I chose to enroll in Flatiron School's self-paced online
-                    software engineering program.
+                    My eight-year background in print, graphic, and web design
+                    gave me an understanding of how to engage with visuals,
+                    iterate on ideas, and create within specs. In 2019, I got my
+                    first real taste of building an app because I decided to
+                    build one for myself.
                   </p>
+
+                  <AnimatePresence exitBeforeEnter initial={false}>
+                    {readMore ? (
+                      <>
+                        <motion.div
+                          key='show less'
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className='grid grid-flow-row gap-4'
+                        >
+                          <button
+                            onClick={() => setReadMore(false)}
+                            className='flex items-center text-sm text-left transition-colors duration-200 hover:text-white text-gray-40'
+                          >
+                            <ChevronUp className='w-3 h-3 fill-current' />
+                            <span className='ml-1'>show less</span>
+                          </button>
+                          <h3>
+                            <span
+                              role='img'
+                              aria-label='dice emoji'
+                              className='mr-1'
+                            >
+                              🎲️{' '}
+                            </span>
+                            My First App
+                          </h3>
+                          <p>
+                            I created my first real app,
+                            [BGQuickstart.com](https://bgquickstart.com),
+                            because I wanted a faster way to choose a start
+                            player when playing board games with friends. After
+                            teaching myself React, I realized I had fallen in
+                            love with the feeling of solving problems with code
+                            and immediately started planning my next app.
+                          </p>
+                          <p>
+                            After some time, I decided to switch to a career in
+                            software engineering and joined Flatiron School's to
+                            accelerate the transition.
+                          </p>
+                          <h3>
+                            <span
+                              role='img'
+                              aria-label='graduation cap emoji'
+                              className='mr-1'
+                            >
+                              🎓️{' '}
+                            </span>
+                            Flatiron School
+                          </h3>
+                          <p>
+                            At Flatiron, I learned Ruby, Ruby on Rails,
+                            JavaScript, and React. It was exciting to learn how
+                            to work with the back end side of things. Databases,
+                            controllers, and routing were always confusing when
+                            I tried to learn it on my own. But after learning
+                            the basics at Flatiron, I've already gone on to
+                            learn my way around Express, GraphQL, and NodeJS to
+                            expand my backend repertoire.
+                          </p>
+                          <p>
+                            I'm thrilled to continue expanding the skill-set I
+                            developed as a student at Flatiron School.
+                          </p>
+                        </motion.div>
+                      </>
+                    ) : (
+                      <motion.div
+                        key='show more'
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.1 }}
+                        className='grid grid-flow-row gap-4'
+                      >
+                        <button
+                          onClick={() => setReadMore(true)}
+                          className='flex items-center text-sm text-left transition-colors duration-200 hover:text-white text-gray-40'
+                        >
+                          <ChevronDown className='w-3 h-3 fill-current' />
+                          <span className='ml-1'>show more</span>
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                   <p className='text-lg font-bold'>
-                    If you're looking for a React developer who's a
-                    self-starter, eager to grow, and excited to learn, let's
-                    chat!
+                    Whether you're looking to hire an eager self-starter or just
+                    looking to build your network, I'd love to hear your story.
+                  </p>
+                  <p>
+                    <span role='img' aria-label='inbox emoji' className='mr-1'>
+                      📥️{' '}
+                    </span>
+                    DMs are open on{' '}
+                    <a
+                      className='transition-colors duration-200 text-blue-50 hover:text-blue-40'
+                      href='https://linkedin.com/in/imjoshellis'
+                    >
+                      LinkedIn
+                    </a>
+                    {' and '}
+                    <a
+                      className='transition-colors duration-200 text-blue-50 hover:text-blue-40'
+                      href='https://twitter.com/imjoshells'
+                    >
+                      Twitter
+                    </a>{' '}
                   </p>
                 </div>
               </div>
