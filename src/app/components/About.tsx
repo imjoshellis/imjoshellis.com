@@ -259,8 +259,8 @@ export const About: React.FC<AboutProps> = () => {
                     )}
                   </AnimatePresence>
                   <p className='text-lg font-bold'>
-                    Whether you're looking to hire an eager self-starter or just
-                    looking to build your network, I'd love to hear your story.
+                    Whether you're looking to hire an eager self-starter or
+                    build your network, I'd love to hear your story.
                   </p>
                   <p>
                     <span role='img' aria-label='inbox emoji' className='mr-1'>
