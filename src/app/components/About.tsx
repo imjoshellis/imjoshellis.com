@@ -37,20 +37,15 @@ export const About: React.FC<AboutProps> = () => {
     'JavaScript',
     'TypeScript',
     'Svelte',
-    'Preact',
     'React',
     'Redux',
+    'GraphQL',
     'Ruby on Rails',
     'PWA',
+    'Express',
+    'Nodejs',
     'SQL',
-    'GraphQL',
-    'Origami Studio',
-    'Sketch',
-    'Figma',
-    'Photoshop',
-    'Illustrator',
-    'InDesign',
-    'Adobe XD'
+    'Adobe CC'
   ]
 
   return (
