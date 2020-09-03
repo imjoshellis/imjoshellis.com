@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import HeartIcon from '../../assets/heroicons/outline/Heart'
 import Tag from './Tag'
 import ChatIcon from '../../assets/heroicons/outline/Chat'
+import { Loading } from './Loading'
 
 interface BlogPostsProps {}
 
@@ -70,42 +71,44 @@ export const BlogPosts: React.FC<BlogPostsProps> = () => {
         )}
       </h2>
       <div className='flex flex-col gap-6 md:grid md:grid-cols-2'>
-        {state === undefined
-          ? 'Loading posts from DEV.to'
-          : state.slice(0, 6).map(p => (
-              <div className='flex flex-col max-w-md gap-2 pb-2 text-gray-30'>
-                <div className='flex flex-col'>
-                  <h3>
-                    <a
-                      className='text-xl font-bold duration-200 text-gray-10 transition-color hover:text-blue-40'
-                      href={p.url}
-                    >
-                      {p.title}
-                    </a>
-                  </h3>
-                  <p className='flex items-center text-sm text-gray-50'>
-                    {moment(p.published_at, moment.ISO_8601).fromNow()}
-                    <span className='px-1 opacity-50'> • </span>
-                    {p.public_reactions_count}{' '}
-                    <HeartIcon className='w-4 h-4 ml-1' />
-                    <span className='px-1 opacity-50'> • </span>
-                    {p.comments_count} <ChatIcon className='w-4 h-4 ml-1' />
-                  </p>
-                </div>
-                <div className='flex gap-2'>
-                  {p.tags.split(', ').map((t: string) => (
-                    <Tag name={t} />
-                  ))}
-                </div>
-                <p>{p.description}</p>
-                <a
-                  href={p.url}
-                  className='duration-200 text-gray-10 transition-color hover:text-blue-40 '
-                >
-                  (read on Dev.to)
-                </a>
+        {state === undefined ? (
+          <Loading loading source='Dev.to' />
+        ) : (
+          state.slice(0, 6).map(p => (
+            <div className='flex flex-col max-w-md gap-2 pb-2 text-gray-30'>
+              <div className='flex flex-col'>
+                <h3>
+                  <a
+                    className='text-xl font-bold duration-200 text-gray-10 transition-color hover:text-blue-40'
+                    href={p.url}
+                  >
+                    {p.title}
+                  </a>
+                </h3>
+                <p className='flex items-center text-sm text-gray-50'>
+                  {moment(p.published_at, moment.ISO_8601).fromNow()}
+                  <span className='px-1 opacity-50'> • </span>
+                  {p.public_reactions_count}{' '}
+                  <HeartIcon className='w-4 h-4 ml-1' />
+                  <span className='px-1 opacity-50'> • </span>
+                  {p.comments_count} <ChatIcon className='w-4 h-4 ml-1' />
+                </p>
               </div>
-            ))}
+              <div className='flex gap-2'>
+                {p.tags.split(', ').map((t: string) => (
+                  <Tag name={t} />
+                ))}
+              </div>
+              <p>{p.description}</p>
+              <a
+                href={p.url}
+                className='duration-200 text-gray-10 transition-color hover:text-blue-40 '
+              >
+                (read on Dev.to)
+              </a>
+            </div>
+          ))
+        )}
       </div>
     </div>
   )

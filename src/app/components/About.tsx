@@ -1,5 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
 import 'mailgo/dist/mailgo.dark.min.js'
+import Loading from './Loading'
 import React, { useState } from 'react'
 import { Newspaper, ChevronDown, ChevronUp } from '../../assets/heroicons/solid'
 import Tag from './Tag'
@@ -54,7 +55,7 @@ export const About: React.FC<AboutProps> = () => {
 
   return (
     <div className=''>
-      {loading && 'Loading data from GitHub...'}
+      <Loading loading={loading} source='GitHub' />
       {error && `Error! ${error.message}`}
       {data && (
         <div className='flex flex-col items-center py-4 lg:gap-8 lg:grid lg:grid-cols-3'>

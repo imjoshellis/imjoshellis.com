@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client'
 import moment from 'moment'
 import React from 'react'
 import Card from './Card'
+import Loading from './Loading'
 
 const GET_FEATURED_REPOS = gql`
   query GetFeaturedRepos {
@@ -87,7 +88,9 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
           )}
         </h2>
         <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
-          {loading && 'Loading data from GitHub...'}
+          <Loading loading={loading} source='GitHub' />
+          <Loading loading={loading} source='GitHub' />
+          <Loading loading={loading} source='GitHub' />
           {error && `Error! ${error.message}`}
           {data &&
             featuredRepoList.map((r: any) => (

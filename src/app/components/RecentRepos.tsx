@@ -2,6 +2,7 @@ import React from 'react'
 import { gql, useQuery } from '@apollo/client'
 import moment from 'moment'
 import Card from './Card'
+import Loading from './Loading'
 
 const GET_RECENT_REPOS = gql`
   query GetRecentRepos {
@@ -95,7 +96,9 @@ export const RecentRepos: React.FC<RecentReposProps> = () => {
           )}
         </h2>
         <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
-          {loading && 'Loading data from GitHub...'}
+          <Loading loading={loading} source='GitHub' />
+          <Loading loading={loading} source='GitHub' />
+          <Loading loading={loading} source='GitHub' />
           {error && `Error! ${error.message}`}
           {data &&
             data.viewer.repositories.edges
