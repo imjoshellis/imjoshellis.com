@@ -76,8 +76,7 @@ export const About: React.FC<AboutProps> = () => {
                     dangerouslySetInnerHTML={{ __html: my.status.emojiHTML }}
                   />
                   <div>
-                    <span className='inline ml-1'>Currently</span>
-                    <span className='inline ml-1'>{my.status.message}</span>.
+                    <span className='inline'>{my.status.message}</span>.
                   </div>
                 </div>
               )}
