@@ -22,7 +22,7 @@ export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
       'bg-gray-90 rounded-lg rounded-b-none overflow-hidden flex-grow flex flex-col gap-4',
     head: 'flex flex-col justify-between text-gray-30 pb-4 gap-4 bg-gray-80',
     lastCommit: 'text-xs text-white pt-1',
-    tags: 'flex flex-row flex-wrap p-4 gap-2 pb-2',
+    tags: 'flex flex-row flex-wrap-reverse justify-center p-4 gap-2 pb-2',
     info: {
       base: 'pb-4',
       header: 'pl-4 font-medium tracking-wider mb-1 text-white truncate ',
