@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = () => {
 
   return (
     <motion.div
-      className='sticky top-0 z-50 py-2 bg-gray-100 bg-opacity-50 shadow backdrop-blur'
+      className='sticky top-0 z-50 py-2 bg-gray-100 bg-opacity-50 backdrop-blur'
       initial={{ opacity: 1 }}
       animate={{
         opacity: isScrollingUp ? 1 : 0,
