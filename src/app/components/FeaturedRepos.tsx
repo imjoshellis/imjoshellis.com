@@ -71,10 +71,10 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
   return (
     <>
       <div>
-        <h2 className='flex flex-col items-baseline py-2 text-xl font-bold md:gap-2 md:flex-row'>
+        <h2 className='flex flex-col items-baseline py-2 text-xl font-bold md:flex-row'>
           Featured Projects{' '}
           {data && (
-            <div className='text-sm font-normal text-gray-30'>
+            <div className='text-sm font-normal text-gray-30 md:ml-2'>
               (last commit {lastCommitTime}){' '}
               {lastCommitTime.match(/[ms]/) && (
                 <>

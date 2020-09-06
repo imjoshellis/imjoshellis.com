@@ -7,7 +7,7 @@ interface TagProps {
 export const Tag: React.FC<TagProps> = ({ name }) => {
   const generateTagWrap = (name: string) => {
     const classnames = [
-      'flex flex-row items-center rounded text-xs shadow-md overflow-hidden transition duration-200 select-none'
+      'flex flex-row items-center rounded text-xs shadow-md overflow-hidden transition duration-200 select-none mb-2 mr-2'
     ] as String[]
     const baseColor = 'bg-gray-70 text-gray-20'
     const specialNames = [
@@ -47,7 +47,7 @@ export const Tag: React.FC<TagProps> = ({ name }) => {
     <>
       <div className={tagWrap}>
         {/* {icon && icon} */}
-        <div className='flex-grow px-2'>{name}</div>
+        <div className='flex-grow px-2 '>{name}</div>
       </div>
     </>
   )

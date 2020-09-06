@@ -19,13 +19,13 @@ export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
   let classes = {
     wrap: 'shadow h-full flex flex-col',
     base:
-      'bg-gray-90 rounded-lg rounded-b-none overflow-hidden flex-grow flex flex-col gap-4',
-    head: 'flex flex-col justify-between text-gray-30 pb-4 gap-4 bg-gray-80',
+      'bg-gray-90 rounded-lg rounded-b-none overflow-hidden flex-grow flex flex-col',
+    head: 'flex flex-col justify-between text-gray-30 bg-gray-80',
     lastCommit: 'text-xs text-white pt-1',
-    tags: 'flex flex-row flex-wrap-reverse justify-center p-4 gap-2 pb-2',
+    tags: 'flex flex-row flex-wrap-reverse justify-center pt-4 pb-2',
     info: {
       base: 'pb-4',
-      header: 'pl-4 font-medium tracking-wider mb-1 text-white truncate ',
+      header: 'mt-4 pl-4 font-medium tracking-wider mb-1 text-white truncate ',
       description: 'px-4 text-xs text-gray-10 flex-grow',
       stats:
         'flex flex-col justify-center pl-4 border-l border-solid border-gray-100 text-gray-30 px-4',
@@ -77,12 +77,13 @@ export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
             {topics &&
               topics
                 .sort()
+                .reverse()
                 .map((t: string) => (
                   <Tag key={t} name={t.split('-').join(' ')} />
                 ))}
           </div>
           {repoData.usesCustomOpenGraphImage && useImage && (
-            <div className='px-4'>
+            <div className='px-4 mb-4'>
               <div className='overflow-hidden bg-gray-100 rounded p-2px'>
                 <div className='flex p-1'>
                   <div className='w-1.5 h-1.5 rounded-full bg-gray-70' />

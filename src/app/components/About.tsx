@@ -66,41 +66,38 @@ export const About: React.FC<AboutProps> = () => {
               alt='My Avatar'
             />
             <h2 className='text-xl font-bold'>Josh Ellis</h2>
-            <div className='flex flex-col flex-grow gap-1 px-4'>
+            <div className='flex flex-col flex-grow px-2 mt-4'>
               {my.status && (
                 <div className='flex text-gray-30'>
                   <span
                     role='img'
                     aria-label='Graduate Emoji'
-                    className='mr-1'
                     dangerouslySetInnerHTML={{ __html: my.status.emojiHTML }}
                   />
-                  <div>
-                    <span className='inline'>{my.status.message}</span>.
-                  </div>
+                  <span className='inline ml-2'>{my.status.message}</span>.
                 </div>
               )}
               {my.location && (
                 <div className='flex text-gray-30'>
-                  <span role='img' aria-label='Graduate Emoji' className='mr-1'>
+                  <span role='img' aria-label='Graduate Emoji'>
                     🗺️
                   </span>
-                  <span className='ml-1'>{my.location}</span>
+                  <span className='ml-2'>{my.location}</span>
                 </div>
               )}
               {my.company && (
                 <div className='flex text-gray-30'>
-                  <span role='img' aria-label='Graduate Emoji' className='mr-1'>
+                  <span role='img' aria-label='Graduate Emoji'>
                     🏢️
                   </span>
-                  <span className='ml-1'>{my.company}</span>
+                  <span className='ml-2'>{my.company}</span>
                 </div>
               )}{' '}
               <div className='flex text-gray-30'>
-                <span role='img' aria-label='Graduate Emoji' className='mr-1'>
+                <span role='img' aria-label='Graduate Emoji'>
                   👨🏻‍🎓
                 </span>
-                <span className='ml-1'>Flatiron School 9/2020</span>
+                <span className='ml-2'>Flatiron School 9/2020</span>
               </div>
             </div>
             <div className='grid w-full grid-cols-3 mt-4 text-xs font-bold uppercase gap-2px'>

@@ -62,15 +62,15 @@ export const BlogPosts: React.FC<BlogPostsProps> = () => {
 
   return (
     <div className='py-4'>
-      <h2 className='flex flex-col items-baseline py-2 text-xl font-bold md:gap-2 md:flex-row'>
+      <h2 className='flex flex-col items-baseline py-2 text-xl font-bold md:flex-row'>
         Blog Posts{' '}
         {state !== undefined && (
-          <div className='text-sm font-normal text-gray-30'>
+          <div className='text-sm font-normal text-gray-30 md:ml-2'>
             (last post {moment(state[0].published_at).fromNow()})
           </div>
         )}
       </h2>
-      <div className='flex flex-col gap-6 md:grid md:grid-cols-2'>
+      <div className='flex flex-col gap-6 lg:grid lg:grid-cols-2'>
         {state === undefined ? (
           <Loading loading source='Dev.to' />
         ) : (
@@ -94,7 +94,7 @@ export const BlogPosts: React.FC<BlogPostsProps> = () => {
                   {p.comments_count} <ChatIcon className='w-4 h-4 ml-1' />
                 </p>
               </div>
-              <div className='flex gap-2'>
+              <div className='flex flex-wrap mt-2'>
                 {p.tags.split(', ').map((t: string) => (
                   <Tag name={t} />
                 ))}
