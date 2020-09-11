@@ -55,7 +55,7 @@ export const About: React.FC<AboutProps> = () => {
       {data && (
         <div className='flex flex-col items-center py-4 lg:gap-8 lg:grid lg:grid-cols-3'>
           <div className='flex flex-col items-center h-full gap-4 overflow-hidden text-sm rounded-md bg-gray-90'>
-            <div className='flex flex-wrap justify-center gap-2 p-4 pb-16 bg-gray-80'>
+            <div className='flex flex-wrap justify-center p-4 pb-16 bg-gray-80'>
               {techTags.map((t, idx) => (
                 <Tag name={t} key={idx} />
               ))}
