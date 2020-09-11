@@ -12,6 +12,7 @@ const GET_RECENT_REPOS = gql`
         orderBy: { field: PUSHED_AT, direction: ASC }
         last: 3
         privacy: PUBLIC
+        isFork: false
       ) {
         edges {
           node {
