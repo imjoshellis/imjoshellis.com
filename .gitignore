@@ -25,3 +25,5 @@ yarn-error.log*
 .next
 .env
 src/tailwind.output.css
+
+/**/node_modules
