@@ -33,6 +33,7 @@ export default gql`
     openGraphImageUrl: String
     usesCustomOpenGraphImage: Boolean
     commitCount: Int
+    branchCount: Int
     latestCommit: Commit
     topics: [String]
   }

@@ -40,6 +40,8 @@ const transformRepoEdges = (edges: any[]) => {
         0
       )
 
+      const branchCount = r.refs.nodes.length
+
       const latestCommit = {
         message: recentRef.target.messageHeadline,
         pushedAt: recentRef.target.pushedDate,
@@ -57,6 +59,7 @@ const transformRepoEdges = (edges: any[]) => {
         openGraphImageUrl,
         usesCustomOpenGraphImage,
         commitCount,
+        branchCount,
         latestCommit,
         topics
       }
