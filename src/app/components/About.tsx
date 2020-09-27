@@ -8,10 +8,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const GET_ABOUT = gql`
   query GetAbout {
-    viewer {
+    getAbout {
       id
       name
-      updatedAt
       bio
       avatarUrl
       location
@@ -31,7 +30,7 @@ interface AboutProps {}
 export const About: React.FC<AboutProps> = () => {
   const { loading, error, data } = useQuery(GET_ABOUT)
   const [readMore, setReadMore] = useState(false)
-  const my = data && data.viewer
+  const my = data && data.getAbout
 
   const techTags = [
     'JavaScript',

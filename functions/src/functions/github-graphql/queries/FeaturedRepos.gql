@@ -1,0 +1,43 @@
+query FeaturedRepos {
+	viewer {
+		id
+		pinnedItems(first: 3) {
+			edges {
+				node {
+					... on Repository {
+						name
+						description
+						homepageUrl
+						pushedAt
+						url
+						openGraphImageUrl
+						usesCustomOpenGraphImage
+						refs(refPrefix: "refs/heads/", last: 3) {
+							nodes {
+								name
+								target {
+									... on Commit {
+										history {
+											totalCount
+										}
+										messageHeadline
+										pushedDate
+									}
+								}
+							}
+						}
+						repositoryTopics(first: 100) {
+							edges {
+								node {
+									topic {
+										name
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

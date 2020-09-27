@@ -6,46 +6,22 @@ import Loading from './Loading'
 
 const GET_FEATURED_REPOS = gql`
   query GetFeaturedRepos {
-    viewer {
-      id
-      pinnedItems(first: 3) {
-        edges {
-          node {
-            ... on Repository {
-              name
-              description
-              homepageUrl
-              pushedAt
-              url
-              openGraphImageUrl
-              usesCustomOpenGraphImage
-              refs(refPrefix: "refs/heads/", last: 3) {
-                nodes {
-                  name
-                  target {
-                    ... on Commit {
-                      history {
-                        totalCount
-                      }
-                      messageHeadline
-                      pushedDate
-                    }
-                  }
-                }
-              }
-              repositoryTopics(first: 100) {
-                edges {
-                  node {
-                    topic {
-                      name
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+    getFeaturedRepos {
+      name
+      description
+      homepageUrl
+      pushedAt
+      url
+      openGraphImageUrl
+      usesCustomOpenGraphImage
+      branchCount
+      commitCount
+      latestCommit {
+        message
+        pushedAt
+        branch
       }
+      topics
     }
   }
 `
@@ -54,19 +30,8 @@ interface FeaturedReposProps {}
 
 export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
   const { loading, error, data } = useQuery(GET_FEATURED_REPOS)
-
-  const featuredRepoList = [] as any[]
-  let lastCommitTime
-
-  if (data) {
-    data.viewer.pinnedItems.edges
-      .map((n: any) => n.node)
-      .concat()
-      .sort((a: any, b: any) => (a.pushedAt < b.pushedAt ? 1 : -1))
-      .forEach((r: any) => featuredRepoList.push(r))
-  }
-
-  lastCommitTime = data && moment(featuredRepoList[0].pushedAt).fromNow()
+  const featuredRepos = data?.getFeaturedRepos
+  const lastCommitTime = data && moment(featuredRepos[0].pushedAt).fromNow()
 
   return (
     <>
@@ -93,7 +58,7 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
           <Loading loading={loading} source='GitHub' />
           {error && `Error! ${error.message}`}
           {data &&
-            featuredRepoList.map((r: any) => (
+            featuredRepos.map((r: any) => (
               <Card key={r.name} repoData={r} useImage={true} />
             ))}
         </div>

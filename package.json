@@ -31,7 +31,9 @@
     "prestart": "npm run build:tailwind",
     "prebuild": "REACT_APP_PRODUCTION=true npm run build:tailwind",
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "concurrently \"npm run build:web\" \"npm run build:functions\"",
+    "build:functions": "cd functions && npm run build",
+    "build:web": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
@@ -39,11 +41,7 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
@@ -53,6 +51,7 @@
   "devDependencies": {
     "customize-cra": "^1.0.0",
     "postcss-preset-env": "^6.7.0",
+    "concurrently": "^5.1.0",
     "tailwindcss": "^1.7.3"
   }
 }

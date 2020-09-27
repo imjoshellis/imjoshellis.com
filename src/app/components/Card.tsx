@@ -43,23 +43,6 @@ export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
     }
   }
 
-  const topics = repoData.repositoryTopics.edges.map(
-    (e: any) => e.node.topic.name
-  )
-
-  const recentRef = repoData.refs.nodes
-    .concat()
-    .sort((a: any, b: any) =>
-      a.target.pushedDate < b.target.pushedDate ? 1 : -1
-    )[0]
-  const commitCount = repoData.refs.nodes.reduce(
-    (acc: number, curr: any) => acc + curr.target.history.totalCount,
-    0
-  )
-  const branchCount = repoData.refs.nodes.length
-  const lastCommitMsg = recentRef.target.messageHeadline
-  const lastCommitTime = moment(recentRef.target.pushedDate).fromNow()
-  const lastCommitBranch = recentRef.name
   const repoLink = repoData.url
   const demoLink = repoData.homepageUrl
   const repoName = repoData.name.includes('frontend')
@@ -69,12 +52,16 @@ export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
         .join(' ')
     : repoData.name.split('-').join(' ')
 
+  const { branchCount, commitCount, latestCommit } = repoData
+  const latestCommitTime = moment(latestCommit.pushedAt).fromNow()
+  const topics = [...repoData.topics]
+
   return (
     <div className={classes.wrap}>
       <div className={classes.base}>
         <div className={classes.head}>
           <div className={classes.tags}>
-            {topics &&
+            {topics.length > 0 &&
               topics
                 .sort()
                 .reverse()
@@ -120,16 +107,18 @@ export const Card: React.FC<CardPropTypes> = ({ repoData, useImage }) => {
             <IconDetail
               icon={<ChatAlt />}
               size='xs'
-              text={<div className='w-full truncate'>{lastCommitMsg}</div>}
+              text={
+                <div className='w-full truncate'>{latestCommit.message}</div>
+              }
             />
             <IconDetail
               icon={<Clock />}
               size='xs'
               text={
                 <div>
-                  {lastCommitTime} <span className='text-gray-50'>on</span>{' '}
-                  {lastCommitBranch}
-                  {lastCommitTime.match(/[ms]/) && (
+                  {latestCommitTime} <span className='text-gray-50'>on</span>{' '}
+                  {latestCommit.branch}
+                  {latestCommitTime.match(/[ms]/) && (
                     <>
                       <span role='img' aria-label='sparkles emoji'>
                         {' '}
