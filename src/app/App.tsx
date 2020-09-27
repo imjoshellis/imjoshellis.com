@@ -1,13 +1,7 @@
-import {
-  ApolloClient,
-  gql,
-  InMemoryCache,
-  ApolloProvider
-} from '@apollo/client'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import moment from 'moment'
 import React from 'react'
 import Main from './components/Main'
-import queryString from './queryString'
-import moment from 'moment'
 
 moment.updateLocale('en', {
   relativeTime: {
@@ -29,17 +23,8 @@ moment.updateLocale('en', {
 })
 
 const client = new ApolloClient({
-  uri: 'https://api.github.com/graphql',
-  headers: {
-    authorization: `Bearer ${process.env.REACT_APP_GH_TOKEN}`
-  },
+  uri: './.netlify/functions/github-graphql',
   cache: new InMemoryCache()
-})
-
-client.query({
-  query: gql`
-    ${queryString}
-  `
 })
 
 function App () {
