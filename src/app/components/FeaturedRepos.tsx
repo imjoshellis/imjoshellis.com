@@ -14,6 +14,7 @@ const GET_FEATURED_REPOS = gql`
       url
       openGraphImageUrl
       usesCustomOpenGraphImage
+      branchCount
       commitCount
       latestCommit {
         message
@@ -29,16 +30,12 @@ interface FeaturedReposProps {}
 
 export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
   const { loading, error, data } = useQuery(GET_FEATURED_REPOS)
-  console.log(data)
-
-  const featuredRepoList = [] as any[]
-  // let lastCommitTime
-
-  // lastCommitTime = data && moment(featuredRepoList[0].pushedAt).fromNow()
+  const featuredRepos = data?.getFeaturedRepos
+  const lastCommitTime = data && moment(featuredRepos[0].pushedAt).fromNow()
 
   return (
     <>
-      {/*<div>
+      <div>
         <h2 className='flex flex-col items-baseline py-2 text-xl font-bold md:flex-row'>
           Featured Projects{' '}
           {data && (
@@ -61,12 +58,11 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
           <Loading loading={loading} source='GitHub' />
           {error && `Error! ${error.message}`}
           {data &&
-            featuredRepoList.map((r: any) => (
+            featuredRepos.map((r: any) => (
               <Card key={r.name} repoData={r} useImage={true} />
             ))}
         </div>
       </div>
-            */}
     </>
   )
 }
