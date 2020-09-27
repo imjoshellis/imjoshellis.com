@@ -1,0 +1,17 @@
+query GetAbout {
+	viewer {
+		id
+		name
+		updatedAt
+		bio
+		avatarUrl
+		location
+		url
+		status {
+			emojiHTML
+			message
+		}
+		company
+		isHireable
+	}
+}
