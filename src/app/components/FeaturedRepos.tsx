@@ -6,46 +6,21 @@ import Loading from './Loading'
 
 const GET_FEATURED_REPOS = gql`
   query GetFeaturedRepos {
-    viewer {
-      id
-      pinnedItems(first: 3) {
-        edges {
-          node {
-            ... on Repository {
-              name
-              description
-              homepageUrl
-              pushedAt
-              url
-              openGraphImageUrl
-              usesCustomOpenGraphImage
-              refs(refPrefix: "refs/heads/", last: 3) {
-                nodes {
-                  name
-                  target {
-                    ... on Commit {
-                      history {
-                        totalCount
-                      }
-                      messageHeadline
-                      pushedDate
-                    }
-                  }
-                }
-              }
-              repositoryTopics(first: 100) {
-                edges {
-                  node {
-                    topic {
-                      name
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+    getFeaturedRepos {
+      name
+      description
+      homepageUrl
+      pushedAt
+      url
+      openGraphImageUrl
+      usesCustomOpenGraphImage
+      commitCount
+      latestCommit {
+        message
+        pushedAt
+        branch
       }
+      topics
     }
   }
 `
@@ -54,23 +29,16 @@ interface FeaturedReposProps {}
 
 export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
   const { loading, error, data } = useQuery(GET_FEATURED_REPOS)
+  console.log(data)
 
   const featuredRepoList = [] as any[]
-  let lastCommitTime
+  // let lastCommitTime
 
-  if (data) {
-    data.viewer.pinnedItems.edges
-      .map((n: any) => n.node)
-      .concat()
-      .sort((a: any, b: any) => (a.pushedAt < b.pushedAt ? 1 : -1))
-      .forEach((r: any) => featuredRepoList.push(r))
-  }
-
-  lastCommitTime = data && moment(featuredRepoList[0].pushedAt).fromNow()
+  // lastCommitTime = data && moment(featuredRepoList[0].pushedAt).fromNow()
 
   return (
     <>
-      <div>
+      {/*<div>
         <h2 className='flex flex-col items-baseline py-2 text-xl font-bold md:flex-row'>
           Featured Projects{' '}
           {data && (
@@ -98,6 +66,7 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = () => {
             ))}
         </div>
       </div>
+            */}
     </>
   )
 }
