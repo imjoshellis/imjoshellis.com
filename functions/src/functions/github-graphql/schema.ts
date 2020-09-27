@@ -41,6 +41,6 @@ export default gql`
   type Query {
     getAbout: About
     getFeaturedRepos: [Repository]
-    # getRecentRepos: [Repository]
+    getRecentRepos: [Repository]
   }
 `

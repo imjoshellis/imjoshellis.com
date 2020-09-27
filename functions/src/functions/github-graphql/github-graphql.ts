@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-lambda'
 import axios from 'axios'
-import { AboutQuery, FeaturedReposQuery } from './queries'
+import { AboutQuery, FeaturedReposQuery, RecentReposQuery } from './queries'
 import typeDefs from './schema'
 
 const API_URL = 'https://api.github.com/graphql'
@@ -75,8 +75,11 @@ const resolvers = {
     getFeaturedRepos: async () =>
       transformRepoEdges(
         (await postAPI(FeaturedReposQuery)).data.data.viewer.pinnedItems.edges
+      ),
+    getRecentRepos: async () =>
+      transformRepoEdges(
+        (await postAPI(RecentReposQuery)).data.data.viewer.repositories.edges
       )
-    // getRecentRepos: async () => await postAPI(RecentReposQuery)
   }
 }
 
