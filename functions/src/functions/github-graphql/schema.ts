@@ -1,28 +1,45 @@
 import gql from 'graphql-tag'
 
 export default gql`
-	type UserStatus {
-		emojiHTML: HTML
-		message: String
-	}
-
-	type Viewer {
-      id: String
-      name: String
-      bio: String
-      avatarUrl: URI
-      location: String
-      url: URI
-      status: UserStatus
-      company: String
-      isHireable: Boolean
-	}
+  type UserStatus {
+    emojiHTML: String
+    message: String
+  }
 
   type About {
-    viewer: Viewer
+    id: String
+    name: String
+    bio: String
+    avatarUrl: String
+    location: String
+    url: String
+    status: UserStatus
+    company: String
+    isHireable: Boolean
   }
-	
+
+  type Commit {
+    branch: String
+    message: String
+    pushedAt: String
+  }
+
+  type Repository {
+    name: String
+    description: String
+    homepageUrl: String
+    pushedAt: String
+    url: String
+    openGraphImageUrl: String
+    usesCustomOpenGraphImage: Boolean
+    commitCount: Int
+    latestCommit: Commit
+    topics: [String]
+  }
+
   type Query {
-    getAbout(): About
+    getAbout: About
+    getFeaturedRepos: [Repository]
+    # getRecentRepos: [Repository]
   }
 `
