@@ -12,8 +12,8 @@ export const Main: React.FC<MainPropTypes> = () => (
     <Header />
     <About />
     <FeaturedRepos />
-    <RecentRepos />
-    <BlogPosts />
+    {/* <RecentRepos /> */}
+    {/* <BlogPosts /> */}
   </div>
 )
 
