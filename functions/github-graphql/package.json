@@ -1,0 +1,10 @@
+{
+  "name": "github-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": ["netlify", "serverless", "js", "apollo"],
+  "author": "Netlify",
+  "license": "MIT"
+}
