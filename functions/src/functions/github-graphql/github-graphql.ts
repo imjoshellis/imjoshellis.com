@@ -1,32 +1,82 @@
-import { DocumentNode } from 'graphql'
 import { ApolloServer } from 'apollo-server-lambda'
 import axios from 'axios'
-import { AboutQuery, FeaturedReposQuery, RecentReposQuery } from './queries'
+import { AboutQuery, FeaturedReposQuery } from './queries'
 import typeDefs from './schema'
 
-const API_URL = 'https://api.github.com/grapql'
+const API_URL = 'https://api.github.com/graphql'
 const headers = {
   authorization: `Bearer ${process.env.GH_TOKEN}`
 }
 
-const postAPI = (query: DocumentNode) =>
-  axios.post(API_URL, { query }, { headers })
+const postAPI = async (query: string) =>
+  await axios.post(API_URL, { query }, { headers })
+
+const transformRepoEdges = (edges: any[]) => {
+  const repositories = [] as any[]
+
+  edges
+    .map((n: any) => n.node)
+    .concat()
+    .sort((a: any, b: any) => (a.pushedAt < b.pushedAt ? 1 : -1))
+    .map((r: any) => {
+      const {
+        name,
+        description,
+        homepageUrl,
+        pushedAt,
+        url,
+        openGraphImageUrl,
+        usesCustomOpenGraphImage
+      } = r
+
+      const recentRef = r.refs.nodes
+        .concat()
+        .sort((a: any, b: any) =>
+          a.target.pushedDate < b.target.pushedDate ? 1 : -1
+        )[0]
+
+      const commitCount = r.refs.nodes.reduce(
+        (acc: number, curr: any) => acc + curr.target.history.totalCount,
+        0
+      )
+
+      const latestCommit = {
+        message: recentRef.target.messageHeadline,
+        pushedAt: recentRef.target.pushedDate,
+        branch: recentRef.name
+      }
+
+      const topics = r.repositoryTopics.edges.map((e: any) => e.node.topic.name)
+
+      return {
+        name,
+        description,
+        homepageUrl,
+        pushedAt,
+        url,
+        openGraphImageUrl,
+        usesCustomOpenGraphImage,
+        commitCount,
+        latestCommit,
+        topics
+      }
+    })
+    .forEach((r: any) => repositories.push(r))
+
+  return repositories
+}
 
 const resolvers = {
   Query: {
-    getAbout: async () => {
-      const res = await postAPI(AboutQuery)
-      console.log(res)
-      return res
-    }
-    // getFeaturedRepos: async () => await postAPI(FeaturedReposQuery),
+    getAbout: async () => (await postAPI(AboutQuery)).data.data.viewer,
+    getFeaturedRepos: async () =>
+      transformRepoEdges(
+        (await postAPI(FeaturedReposQuery)).data.data.viewer.pinnedItems.edges
+      )
     // getRecentRepos: async () => await postAPI(RecentReposQuery)
   }
 }
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers
-})
+const server = new ApolloServer({ typeDefs, resolvers })
 
 export const handler = server.createHandler()
