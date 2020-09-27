@@ -23,7 +23,7 @@ moment.updateLocale('en', {
 })
 
 const client = new ApolloClient({
-  uri: './.netlify/functions/github-graphql',
+  uri: '/.netlify/functions/github-graphql',
   cache: new InMemoryCache()
 })
 
