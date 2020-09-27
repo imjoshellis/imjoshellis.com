@@ -1,3 +1,4 @@
+import { DocumentNode } from 'graphql'
 import { ApolloServer } from 'apollo-server-lambda'
 import axios from 'axios'
 import { AboutQuery, FeaturedReposQuery, RecentReposQuery } from './queries'
@@ -8,7 +9,8 @@ const headers = {
   authorization: `Bearer ${process.env.GH_TOKEN}`
 }
 
-const postAPI = query => axios.post(API_URL, { query }, { headers })
+const postAPI = (query: DocumentNode) =>
+  axios.post(API_URL, { query }, { headers })
 
 const resolvers = {
   Query: {

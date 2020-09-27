@@ -1,6 +1,6 @@
 [build]
   command = "yarn run build"
-  functions = "functions" 
+  functions = "functions/dist/functions" 
   
 [dev]
   functions = "functions"
