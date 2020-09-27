@@ -1,6 +1,4 @@
-import gql from 'graphql-tag'
-
-export const AboutQuery = gql`
+export const AboutQuery = `
   query About {
     viewer {
       id
@@ -19,7 +17,7 @@ export const AboutQuery = gql`
   }
 `
 
-export const FeaturedReposQuery = gql`
+export const FeaturedReposQuery = `
   query FeaturedRepos {
     viewer {
       id
@@ -65,7 +63,7 @@ export const FeaturedReposQuery = gql`
   }
 `
 
-export const RecentReposQuery = gql`
+export const RecentReposQuery = `
   query RecentRepos {
     viewer {
       id
