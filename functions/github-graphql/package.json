@@ -1,8 +1,8 @@
 {
-  "name": "apollo-graphql-rest",
+  "name": "github-graphql",
   "version": "1.0.0",
-  "description": "netlify functions:create - GraphQL function to wrap REST API using apollo-server-lambda and apollo-datasource-rest!",
-  "main": "apollo-graphql-rest.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {},
   "keywords": ["netlify", "serverless", "js", "apollo"],
   "author": "Netlify",
