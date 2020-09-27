@@ -12,7 +12,11 @@ const postAPI = query => axios.post(API_URL, { query }, { headers })
 
 const resolvers = {
   Query: {
-    getAbout: async () => await postAPI(AboutQuery)
+    getAbout: async () => {
+      const res = await postAPI(AboutQuery)
+      console.log(res)
+      return res
+    }
     // getFeaturedRepos: async () => await postAPI(FeaturedReposQuery),
     // getRecentRepos: async () => await postAPI(RecentReposQuery)
   }
@@ -24,5 +28,3 @@ const server = new ApolloServer({
 })
 
 export const handler = server.createHandler()
-
-export default handler
