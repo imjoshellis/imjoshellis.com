@@ -1,7 +1,6 @@
 [build]
   command = "yarn run build"
-  functions = "functions" # netlify dev uses this directory to scaffold and serve your functions
-  publish = "build"
+  functions = "functions" 
   
 [dev]
   functions = "functions"
