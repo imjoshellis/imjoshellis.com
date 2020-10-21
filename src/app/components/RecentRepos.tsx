@@ -33,7 +33,6 @@ export const RecentRepos: React.FC<RecentReposProps> = () => {
 
   const recentRepos = data?.getRecentRepos
   const lastCommitTime = data && moment(recentRepos[0].pushedAt).fromNow()
-  console.log(data)
 
   return (
     <>
