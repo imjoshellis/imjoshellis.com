@@ -59,11 +59,9 @@ export const RecentRepos: React.FC<RecentReposProps> = () => {
           <Loading loading={loading} source='GitHub' />
           {error && `Error! ${error.message}`}
           {data &&
-            recentRepos
-              .map((r: any) => (
-                <Card key={r.name} repoData={r} useImage={false} />
-              ))
-              .reverse()}
+            recentRepos.map((r: any) => (
+              <Card key={r.name} repoData={r} useImage={false} />
+            ))}
         </div>
       </div>
     </>
