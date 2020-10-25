@@ -35,7 +35,9 @@ export const About: React.FC<AboutProps> = () => {
   const techTags = [
     'JavaScript',
     'TypeScript',
-    'Svelte',
+    'Microservices',
+    'Docker',
+    'Kubernetes',
     'React',
     'Redux',
     'GraphQL',
@@ -44,6 +46,8 @@ export const About: React.FC<AboutProps> = () => {
     'Express',
     'Nodejs',
     'SQL',
+    'Postgres',
+    'MongoDB',
     'Adobe CC'
   ]
 
