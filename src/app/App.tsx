@@ -1,7 +1,14 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import moment from 'moment'
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch
+} from 'react-router-dom'
 import Main from './components/Main'
+import ExternalRedirect from './components/ExternalRedirect'
 
 moment.updateLocale('en', {
   relativeTime: {
@@ -29,9 +36,22 @@ const client = new ApolloClient({
 
 function App () {
   return (
-    <ApolloProvider client={client}>
-      <Main />
-    </ApolloProvider>
+    <Router>
+      <Switch>
+        <Route exact path='/'>
+          <ApolloProvider client={client}>
+            <Main />
+          </ApolloProvider>
+        </Route>
+        <ExternalRedirect
+          path='/bgg'
+          url='https://boardgamegeek.com/collection/user/imjoshellis?own=1&subtype=boardgame&ff=1'
+        />
+        <Route path='*'>
+          <Redirect to='/' />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
