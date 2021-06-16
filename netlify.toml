@@ -1,4 +1,8 @@
 [build]
-  command = "yarn run build"
-  functions = "functions/dist/functions" 
-  
+command = "yarn run build"
+functions = "functions/dist/functions"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
